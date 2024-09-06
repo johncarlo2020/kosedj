@@ -11,27 +11,17 @@
                     </h1>
 
                     <div class="mt-3 branding">
-                        <img
-                            class="structure"
-                            src="{{ asset('images/structure.png') }}"
-                            alt=""
-                        />
+                        <img class="structure" src="{{ asset('images/structure.png') }}" alt="" />
                     </div>
-                    <a
-                        href="{{ route('survey') }}"
-                        class="mt-5 mb-5 discover-btn btn rounded-pill"
-                        >Start Survey</a
-                    >
+                    @if ($user == true)
+                        <a href="{{ route('congrats') }}" class="mt-5 mb-5 discover-btn btn rounded-pill">Start
+                            Survey</a>
+                    @else
+                        <a href="{{ route('survey') }}" class="mt-5 mb-5 discover-btn btn rounded-pill">Start Survey</a>
+                    @endif
+
                 </div>
             </div>
         </div>
     </div>
-
-    <script>
-        function congrats() {
-            var url = "{{ route('congrats') }}";
-            // Redirect to the generated URL
-            window.location.href = url;
-        }
-    </script>
 </x-app-layout>

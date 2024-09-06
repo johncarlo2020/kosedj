@@ -1535,6 +1535,12 @@ $form-check-hover-shadow: rgba(0, 123, 255, 0.5);
 
 
 .congrats-page {
+     background-image: url("images/main-bg2.png") !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    background-attachment: fixed;
+
     .image-container {
         width: 100%;
         position: relative;

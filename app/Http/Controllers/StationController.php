@@ -68,13 +68,17 @@ class StationController extends Controller
                 'percentage_answered' => $percentageAnswered,
             ];
         }
-        $topThreeSurveys = collect($surveyData)
+
+        // Sort by highest percentage first, take the top 3, and reset the indexes
+        $top = collect($surveyData)
             ->sortByDesc('percentage_answered') // Sort by highest percentage first
             ->take(3) // Limit to top 3
+            ->values() // Reset the array indexes to 0, 1, 2
             ->toArray();
+        // dd($top);
 
         // dd($topThreeSurveys);
-        return view('congrats');
+        return view('congrats', compact('top'));
     }
 
     public function survey()
@@ -88,22 +92,9 @@ class StationController extends Controller
     {
         $userId = Auth::id();
 
-        $user = User::with('stationUser')->where('id', auth()->id())->first();
-        // dd($user->stationUser->count());
+        $user = Answers::where('user_id', auth()->id())->exists();
 
-        $stationDone = $user->stationUser->count();
-        $stations = Station::get();
-
-        // Loop through each station and append a flag indicating if the user has it
-        foreach ($stations as $station) {
-            $userHasStation = $user
-                ->StationUser()
-                ->where('station_id', $station->id)
-                ->exists();
-            $station->status = $userHasStation;
-        }
-
-        return view('dashboard', compact('stations', 'stationDone'));
+        return view('dashboard', compact('user'));
     }
 
     public function scan(Request $request)
