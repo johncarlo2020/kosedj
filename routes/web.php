@@ -28,10 +28,6 @@ Route::get('/admin/login', function () {
     return view('auth.admin-login');
 });
 
-Route::get('/congrats', function () {
-    return view('congrats');
-})->name('congrats');
-
 Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin', 'App\Http\Controllers\StationController@admin')->name('admin');
     Route::get('/admin/users', 'App\Http\Controllers\StationController@users')->name('users');
@@ -49,6 +45,8 @@ Route::group(['middleware' => ['client']], function () {
     Route::get('/station/{station}/extension', 'App\Http\Controllers\StationController@extension')->name('station.extension');
     Route::get('/station/{station}/brand', 'App\Http\Controllers\StationController@brand')->name('station.brand');
     Route::get('/survey', 'App\Http\Controllers\StationController@survey')->name('survey');
+    Route::post('/answerSurvey', 'App\Http\Controllers\StationController@answerSurvey')->name('answerSurvey');
+    Route::get('/congrats', 'App\Http\Controllers\StationController@congrats')->name('congrats');
 });
 
 require __DIR__ . '/auth.php';

@@ -7,6 +7,7 @@ use App\Models\Station;
 use App\Models\User;
 use App\Models\StationUser;
 use App\Models\Brand;
+use App\Models\Answers;
 use App\Models\Survey;
 
 use DB;
@@ -22,6 +23,58 @@ class StationController extends Controller
             ->exists();
 
         return view('station', compact('station', 'user'));
+    }
+
+    public function answerSurvey(Request $request)
+    {
+        $data = [];
+        $userId = auth()->id();
+        $questions = $request->question;
+        foreach ($questions as $key => $id) {
+            $data[] = [
+                'user_id' => $userId,
+                'question_id' => $id,
+            ];
+        }
+
+        DB::table('answers')->insert($data);
+
+        return redirect()->route('congrats');
+    }
+
+    public function congrats()
+    {
+        $userId = auth()->id();
+
+        $surveys = Survey::with('question')->get();
+
+        // Prepare data to store surveys with percentage
+        $surveyData = [];
+
+        foreach ($surveys as $survey) {
+            // Get total number of questions for the survey
+            $totalQuestions = $survey->questions->count();
+
+            // Count the number of answered questions by the user
+            $answeredQuestions = Answers::where('user_id', $userId)->whereIn('question_id', $survey->questions->pluck('id'))->count();
+
+            // Calculate percentage
+            $percentageAnswered = $totalQuestions > 0 ? ($answeredQuestions / $totalQuestions) * 100 : 0;
+
+            // Store survey and its percentage
+            $surveyData[] = [
+                'survey' => $survey->id,
+                'survey_name' => $survey->name,
+                'percentage_answered' => $percentageAnswered,
+            ];
+        }
+        $topThreeSurveys = collect($surveyData)
+            ->sortByDesc('percentage_answered') // Sort by highest percentage first
+            ->take(3) // Limit to top 3
+            ->toArray();
+
+        dd($topThreeSurveys);
+        return view('congrats');
     }
 
     public function survey()
