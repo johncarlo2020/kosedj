@@ -26,10 +26,9 @@ class StationController extends Controller
 
     public function survey()
     {
-        $survey = Survey::get();
+        $optionsList = Survey::get();
 
-        return $survey; //para makita mo data
-        return view('survey', compact('survey'));
+        return view('survey', compact('optionsList'));
     }
 
     public function welcome()

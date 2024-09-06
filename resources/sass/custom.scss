@@ -1626,3 +1626,53 @@ $form-check-hover-shadow: rgba(0, 123, 255, 0.5);
         margin-bottom: 20px;
     }
 }
+
+.survey {
+    .check-box-container {
+        border-radius: 30px;
+        box-shadow: 0px 0px 23.1px 0px #99D7F699;
+        background: linear-gradient(181.5deg, rgba(255, 255, 255, 0.5) 1.28%, rgba(255, 255, 255, 0) 105.32%);
+    }
+       .nav-pills {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+        margin-top: 20px;
+        justify-content: center;
+        padding: 0;
+
+        .nav-item {
+            border-radius: 30px;
+            .nav-link {
+                padding: 0;
+                width: 100%;
+                height: 7px;
+                font-size: 14px;
+                color: #fff; /* Default text color to white for better contrast */
+                border: 2px solid #E0E0E033;
+                box-shadow: 0px 0px 23.1px 0px #99D7F699;
+
+                &.active {
+                    height: 7px;
+                }
+            }
+
+        }
+
+        $colors: #A34239, #D16F52, #CDB754, #E8DDB1, #4D87C7;
+
+        @for $i from 1 through length($colors) {
+            .nav-item:nth-child(#{$i}) {
+                background-color: nth($colors, $i) !important;
+            }
+        }
+
+    }
+    .btn-info {
+        margin-top: 17%;
+        background: linear-gradient(314.54deg, #2484C6 -15.39%, #A8DDFF 73%);
+        color: #fff;
+    }
+}
+
+
