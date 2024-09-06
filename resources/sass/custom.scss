@@ -13,7 +13,7 @@ body {
 }
 .survey{
      overflow-y: auto; /* Allows vertical scrolling */
-     background-image: url("images/main-bg2.png") !important;
+     background-image: url("../images/main-bg2.png") !important;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom;
@@ -25,7 +25,7 @@ body {
     width: 100%;
 
    overflow-y: auto; /* Allows vertical scrolling */
-     background-image: url("images/main-bg.png");
+     background-image: url("../images/main-bg.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom;
@@ -1535,7 +1535,7 @@ $form-check-hover-shadow: rgba(0, 123, 255, 0.5);
 
 
 .congrats-page {
-     background-image: url("images/main-bg2.png") !important;
+     background-image: url("../images/main-bg2.png") !important;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom;
