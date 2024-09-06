@@ -31,7 +31,11 @@
                                         aria-labelledby="pills-step{{ $index }}-tab">
                                         <div class="step">
                                             <div class="mb-3 text-center text-white step-name">
-                                                <span>{{ $option->name }}</span>
+                                                <div class="mt-3 branding">
+                                                    <img class="surveyBubble"
+                                                        src="{{ asset('images/Survey' . $index + 1 . '.png') }}"
+                                                        alt="" />
+                                                </div>
                                             </div>
                                             <div class="px-4 py-4 check-box-container">
                                                 @foreach ($option->questions as $question)

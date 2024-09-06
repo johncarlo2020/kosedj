@@ -73,7 +73,7 @@ class StationController extends Controller
             ->take(3) // Limit to top 3
             ->toArray();
 
-        dd($topThreeSurveys);
+        // dd($topThreeSurveys);
         return view('congrats');
     }
 
