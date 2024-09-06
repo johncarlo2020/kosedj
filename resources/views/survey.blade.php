@@ -26,7 +26,7 @@
                                     <div class="mb-3 text-center text-white step-name">
                                         <span>{{ $option->name }}</span>
                                     </div>
-                                    <div class="px-3 py-4 check-box-container">
+                                    <div class="px-4 py-4 check-box-container">
                                         @foreach ($option->questions as $question)
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" id="question-{{ $question->id }}" name="question-{{ $question->id }}" value="{{ $question->id }}">
