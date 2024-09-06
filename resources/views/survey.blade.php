@@ -6,6 +6,7 @@
                     @include('components.branding')
                 </div>
                 <div class="col-12">
+                    <form action="">
                     <div class="stepper">
                        <!-- Stepper Navigation -->
                         <ul class="mb-3 nav nav-pills" id="pills-tab" role="tablist">
@@ -37,12 +38,12 @@
                             </div>
                             @endforeach
                         </div>
-
-                        <!-- Continue Button -->
-                        <div class="mt-3 btn-container d-flex justify-content-center align-items-center">
-                            <button class="btn btn-info rounded-pill w-50" onclick="nextStep()">Continue</button>
-                        </div>
                     </div>
+                      <!-- Continue Button -->
+                    <div class="mt-3 btn-container d-flex justify-content-center align-items-center">
+                        <button class="btn btn-info rounded-pill w-50" onclick="nextStep()">Continue</button>
+                    </div>
+                </form>
                 </div>
             </div>
         </div>
@@ -58,7 +59,7 @@
             }
         }
     </script>
-    <!-- Ensure Bootstrap JS is included -->
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
 </x-app-layout>
