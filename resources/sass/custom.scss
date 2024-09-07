@@ -67,7 +67,7 @@ body {
     }
     .welcome {
         .heading {
-            font-size: 32px;
+            font-size: 29px;
             line-height: 1.2;
             text-align: center;
             color: $primary;
@@ -130,7 +130,6 @@ body {
 
 .heading {
     font-size: 34px;
-    font-weight: 700;
     color: $primary;
     line-height: 40px;
     margin-bottom: 0;
@@ -167,7 +166,6 @@ body {
     background: $primary-gradient;
     color: $white; // Use your $white variable
     font-size: 14px;
-    font-weight: 500;
     border-radius: 30px;
     text-decoration: none;
     width: 100%;
@@ -195,7 +193,6 @@ body {
     background: $primary-gradient;
     color: $white; // Use your $white variable
     font-size: 14px;
-    font-weight: 500;
     border-radius: 5px;
     text-decoration: none;
     min-width: 193px;
@@ -270,7 +267,6 @@ div {
             margin-top: 10px;
             .station-text {
                 font-size: 20px;
-                font-weight: 600;
                 letter-spacing: 1px;
                 color: $primary;
                 margin-bottom: 0;
@@ -279,7 +275,6 @@ div {
             .message {
                 font-family: "Inter", sans-serif;
                 font-size: 16px;
-                font-weight: 400;
                 letter-spacing: 1px;
                 color: $primary;
             }

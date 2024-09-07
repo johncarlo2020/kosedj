@@ -123,7 +123,7 @@
                                     id="marketing" />
                                 <label class="form-check-label" for="marketing">
                                     I agree to receive marketing and promotional
-                                    communications from Hadalabo via e-mail and
+                                    communications from Kose via e-mail and
                                     text messages (including SMS/WhatsApp).
                                 </label>
                             </div>
