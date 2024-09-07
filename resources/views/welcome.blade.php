@@ -21,7 +21,6 @@
         margin: 0;
         display: flex;
         flex-direction: column;
-        font-family: "Nunito", sans-serif;
         /* Set the font to Nunito */
         font-size: 16px;
         /* Set the font size to 16px */
