@@ -10,7 +10,9 @@
                     @csrf
                     <div class="row mb-2">
                         <div class="col-12">
-                            <input id="fname" placeholder="First Name" type="text"
+                            <label class="text-left label-form" for="">First Name</label>
+
+                            <input id="fname" placeholder="Enter your first Name" type="text"
                                 class="input-text form-control @error('fname') is-invalid @enderror" name="fname"
                                 value="{{ old('fname') }}" required autocomplete="fname" autofocus />
                             @error('fname')
@@ -23,7 +25,9 @@
 
                     <div class="row mb-2">
                         <div class="col-12">
-                            <input id="Last Name" placeholder="Doe" type="text"
+                            <label class="text-left label-form" for="">Last Name</label>
+
+                            <input id="Last Name" placeholder="Enter your Last Name" type="text"
                                 class="input-text form-control @error('lname') is-invalid @enderror" name="lname"
                                 value="{{ old('lname') }}" required autocomplete="lname" autofocus />
 
@@ -37,6 +41,8 @@
 
                     <div class="row mb-2">
                         <div class="col-12">
+                            <label class="text-left label-form" for="">Date of Birth</label>
+
                             <input id="dob" placeholder="Date of Birth" type="date"
                                 class="input-text form-control @error('dob') is-invalid @enderror" name="dob"
                                 value="{{ old('dob') }}" required autocomplete="dob" autofocus />
@@ -51,6 +57,8 @@
 
                     <div class="row mb-2">
                         <div class="col-12">
+                            <label class="text-left label-form" for="">Email Address</label>
+
                             <input id="email" placeholder="Email" type="email"
                                 class="input-text form-control @error('email') is-invalid @enderror" name="email"
                                 value="{{ old('email') }}" required autocomplete="email" />
@@ -65,6 +73,8 @@
 
                     <div class="row mb-2">
                         <div class="col-12 input-group w-100">
+                            <label class="text-left label-form" for="">Phone Number</label>
+
                             <input id="number" type="number"
                                 class="input-text form-control w-100 @error('number') is-invalid @enderror"
                                 name="number" value="{{ old('number') }}" required autocomplete="number" autofocus />
