@@ -111,7 +111,7 @@
                                     id="privacyPolicy" required />
                                 <label class="form-check-label" for="privacyPolicy">
                                     I agree to the
-                                    <a href="/privacy-policy">Privacy Policy</a>.
+                                    <a href="https://www.kose.com.my/privacy-policy">Privacy Policy</a>.
                                 </label>
                             </div>
                         </div>

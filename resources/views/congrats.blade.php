@@ -64,6 +64,6 @@
         <p>Visit our official website</p>
         <img class="footer-logo" src="{{ asset('images/logo-large.png') }}" alt="" />
         <br>
-        <a href="">Click Here for more Information</a>
+        <a href="https://www.kose.com.my">Click Here for more Information</a>
     </footer>
 </x-app-layout>
