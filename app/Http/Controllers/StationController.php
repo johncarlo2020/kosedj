@@ -67,6 +67,7 @@ class StationController extends Controller
                 'survey_name' => $survey->name,
                 'percentage_answered' => $percentageAnswered,
                 'count' => $answeredQuestions,
+                'total' => $totalQuestions,
             ];
         }
 
@@ -76,7 +77,6 @@ class StationController extends Controller
             ->values() // Reset the array indexes to 0, 1, 2
             ->toArray();
 
-        // dd($topThreeSurveys);
         return view('congrats', compact('top'));
     }
 
