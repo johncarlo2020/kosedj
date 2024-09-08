@@ -53,12 +53,12 @@
             Well done {{ auth()->user()->fname }} ! <br />
             Head to the ticket counter for your skin consultation
         </h1>
-        <div class="mt-3 ranking-container">
+        <div class="my-3 ranking-container">
             @foreach ($top as $index => $item)
                 <div class="ranking ranking__{{$item['survey']}} mb-2 {{ $index >= 3 ? 'd-none' : '' }}">
                     <img src="{{ asset('images/result' . $item['survey'] . '.png') }}" alt="">
                     <div class="barholder">
-                        <p class="rank-name">Blood Deficient</p>
+                        <p class="rank-name">{{ $item['survey_name'] }}</p>
                         <div class="progress">
                             <div class="progress-bar" roley="progressbar" style="width: {{ $item['percentage_answered'] }}%;" aria-valuenow="{{$item['percentage_answered']}}" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>

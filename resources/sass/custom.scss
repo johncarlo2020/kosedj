@@ -1478,6 +1478,8 @@ $form-check-hover-shadow: rgba(0, 123, 255, 0.5);
 }
 
 .survey {
+    height: 100%;
+    overflow: auto;
     .check-box-container {
         border-radius: 30px;
         box-shadow: 0px 0px 23.1px 0px #99D7F699;
@@ -1546,6 +1548,8 @@ $form-check-hover-shadow: rgba(0, 123, 255, 0.5);
 
     .well {
         font-size: 20px;
+        padding: 0 20px;
+        margin-bottom: 20px;
     }
     .image-container {
         width: 100%;
@@ -1597,12 +1601,14 @@ $form-check-hover-shadow: rgba(0, 123, 255, 0.5);
 
         $gradients: (
             linear-gradient(181.35deg, #AE6B6E 1.15%, rgba(255, 255, 255, 0) 98.91%),
-            linear-gradient(181.35deg, #D16F52 1.15%, rgba(255, 255, 255, 0) 98.91%),
-            linear-gradient(181.35deg, #CDB754 1.15%, rgba(255, 255, 255, 0) 98.91%),
+            linear-gradient(181.35deg, #AE6B6E 1.15%, rgba(255, 255, 255, 0) 98.91%),
+            linear-gradient(182.24deg, #D2CBAC 1.88%, rgba(255, 255, 255, 0) 113.72%),
             linear-gradient(181.35deg, #D2CBAC 1.15%, rgba(255, 255, 255, 0) 98.91%),
             linear-gradient(181.35deg, #BBCFD2 1.15%, rgba(255, 255, 255, 0) 98.91%)
         );
 
+
+        $colors: #A34239, #D16F52, #CDB754, #E8DDB1, #4D87C7;
 
 
 
@@ -1613,6 +1619,7 @@ $form-check-hover-shadow: rgba(0, 123, 255, 0.5);
                 }
             }
         }
+
         img {
             position: absolute;
             width: 59px;
@@ -1628,9 +1635,6 @@ $form-check-hover-shadow: rgba(0, 123, 255, 0.5);
             padding-left: 47px;
             padding-right: 20px;
             padding-top: 10px;
-            border: 2px solid;
-            border-color: #86868645;
-
 
             .rank-name {
                 font-size: 14px;
@@ -1638,6 +1642,7 @@ $form-check-hover-shadow: rgba(0, 123, 255, 0.5);
                 text-align: left;
                 color: #FEFEFE;
                 margin-bottom: 5px;
+                font-family: 'Optima pro';
 
             }
             .rank-points {
@@ -1645,17 +1650,28 @@ $form-check-hover-shadow: rgba(0, 123, 255, 0.5);
                 font-weight: 400;
                 text-align: right;
                 color: #939393;
+                font-family: 'Optima pro';
             }
             .progress {
                 border-radius: 12px;
                 height: 6px;
+                background-color: #EDEDEDB2;
 
                 .progress-bar {
-                    background-color: #F07983;
                     border-radius: 12px;
+                    background: #818181;
                 }
             }
 
         }
+    }
+
+    padding-bottom: 40px;
+}
+
+footer {
+    box-sizing: border-box;
+    a {
+        text-decoration: underline !important;
     }
 }
