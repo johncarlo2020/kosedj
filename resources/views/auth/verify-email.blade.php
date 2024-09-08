@@ -24,5 +24,18 @@
                 </div>
             </div>
         </div>
+
     </div>
+    <footer>
+
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+
+
+            <button type="submit" class="logout-text">
+                Logout
+            </button>
+        </form>
+            <a class="footer-text" href="https://wowsome.com.my/">Powered by WOWSOME® 2024</a>
+        </footer>
 </x-guest-layout>
