@@ -17,7 +17,7 @@
 
                         <div>
                             <button class="mt-3 main-btn btn btn-primary" type="submit">
-                                {{ __('Resend Verification Email') }}
+                                Resend Verification Email
                             </button>
                         </div>
                     </form>
