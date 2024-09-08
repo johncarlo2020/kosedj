@@ -1789,3 +1789,26 @@ footer {
         text-decoration: underline !important;
     }
 }
+
+.verify-email {
+    padding: 40px;
+    font-family: 'Optima pro';
+
+    .branding {
+        img {
+            width: 65%;
+        }
+    }
+    h1 {
+        font-size: 20px;
+        color: #fff;
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+    .text{
+        font-size: 14px;
+        color: #fff;
+        margin-bottom: 20px;
+        font-weight: 300;
+    }
+}
