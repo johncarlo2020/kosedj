@@ -13,7 +13,7 @@
                     @csrf
                     <div class="row mb-2">
                         <div class="col-12">
-                            <label class="text-left label-form" for="">Email Address</label>
+                            <label class="text-left label-form" for="">Email</label>
 
                             <input id="email" placeholder="example@email.com" type="email"
                                 class="input-text form-control @error('email') is-invalid @enderror" name="email"
@@ -41,7 +41,7 @@
                 </form>
                 <div class="bottom-text">
                     <p>
-                        Don’t have account yet! Register
+                        Don’t have account yet!
                         <a class="" href="{{ route('register') }}">
                             {{ __('REGISTER') }}
                         </a>

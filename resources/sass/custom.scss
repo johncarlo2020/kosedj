@@ -6,15 +6,57 @@
     src: url('../fonts/LinuxBiolinum.woff2') format('woff2'),
          url('../fonts/LinuxBiolinum.woff') format('woff'),
          url('../fonts/LinuxBiolinum.ttf') format('truetype');
-    font-weight: normal;
+    font-weight: 400;
     font-style: normal;
 }
+
+// @font-face {
+//     font-family: 'Linux Biolinum';
+//     src: url("../fonts/LinBiolinum_R.eot") format("eot"), url("../fonts/LinBiolinum_R.woff") format("woff"), url("../fonts/LinBiolinum_R.ttf") format("truetype"), url("../fonts/LinBiolinum_R.svg#LinBiolinumO") format("svg");
+//     font-weight: normal;
+//     font-style: normal;
+// }
+
+
 @font-face {
     font-family: 'Optima pro';
-    src: url('../fonts/OptimaLTStdDemi.otf') format('opentype');
-    font-weight: normal;
     font-style: normal;
-}
+    font-weight: normal;
+    src: local('Optima'), url('../fonts/OPTIMA.woff') format('woff');
+    }
+
+
+    @font-face {
+    font-family: 'Optima Italic';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Optima Italic'), url('../fonts/Optima_Italic.woff') format('woff');
+    }
+
+
+    @font-face {
+    font-family: 'Optima Medium';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Optima Medium'), url('../fonts/Optima Medium.woff') format('woff');
+    }
+
+
+    @font-face {
+    font-family: 'Optima Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Optima Bold'), url('../fonts/OPTIMA_B.woff') format('woff');
+    }
+
+
+// @font-face {
+//     font-family: 'Optima pro';
+//     src: url('../fonts/OptimaLTStdDemi.otf') format('opentype');
+//     font-weight: 400;
+//     font-style: normal;
+// }
+
 
 html {
     width: 100%;
@@ -24,14 +66,13 @@ html {
 
 html,
 body {
-    font-family: 'Linux Biolinum','san-serif';
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-smooth: always;
+    font-family: 'Linux Biolinum', 'san-serif';
 }
-.survey{
-     overflow-y: auto; /* Allows vertical scrolling */
-     background-image: url("../images/main-bg2.png") !important;
+
+.survey {
+    overflow-y: auto;
+    /* Allows vertical scrolling */
+    background-image: url("../images/main-bg2.png") !important;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom;
@@ -42,8 +83,9 @@ body {
     height: 100vh;
     width: 100%;
 
-   overflow-y: auto; /* Allows vertical scrolling */
-     background-image: url("../images/main-bg.png");
+    overflow-y: auto;
+    /* Allows vertical scrolling */
+    background-image: url("../images/main-bg.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom;
@@ -74,6 +116,7 @@ body {
         font-size: 14px;
         color: #0c5a40;
     }
+
     .welcome {
         .heading {
             font-size: 29px;
@@ -82,12 +125,14 @@ body {
             color: $primary;
             margin-bottom: 15px;
         }
+
         .sub-heading {
             font-size: 22px;
             color: #0c5a40;
             text-align: center;
             margin-bottom: 20px;
         }
+
         .date {
             width: max-content;
             font-size: 16px;
@@ -101,6 +146,7 @@ body {
                 border-bottom: 1px solid #fff;
             }
         }
+
         p {
             font-size: 22px;
             color: #0c5a40;
@@ -115,7 +161,8 @@ body {
             margin: 0;
 
             a {
-                color: $primary;
+                color: $primary !important;
+                text-decoration: underline  !important;
             }
         }
     }
@@ -128,6 +175,7 @@ body {
 }
 
 .btn {
+
     &:hover,
     &:focus,
     &:active {
@@ -253,7 +301,8 @@ div {
         }
     }
 }
-.label-form{
+
+.label-form {
     color: white;
 }
 
@@ -274,6 +323,7 @@ div {
 
         .text-content {
             margin-top: 10px;
+
             .station-text {
                 font-size: 20px;
                 letter-spacing: 1px;
@@ -281,6 +331,7 @@ div {
                 margin-bottom: 0;
                 font-family: "Inter", sans-serif;
             }
+
             .message {
                 font-family: "Inter", sans-serif;
                 font-size: 16px;
@@ -297,6 +348,7 @@ div {
     background-size: cover;
     background-position: bottom;
 }
+
 .register-bg {
     background-image: url("../images/main-bg.png");
     background-repeat: no-repeat;
@@ -314,6 +366,7 @@ div {
     color: $text;
     padding-top: 40px;
 }
+
 .image {
     width: 12vh;
 }
@@ -332,6 +385,7 @@ div {
     font-weight: 600;
     display: block;
 }
+
 .iti {
     width: 100%;
 }
@@ -361,7 +415,7 @@ div {
         position: relative;
     }
 
-    input[type="checkbox"]:checked + label::after {
+    input[type="checkbox"]:checked+label::after {
         content: "";
         position: absolute;
         left: 10px;
@@ -378,7 +432,7 @@ div {
         margin: 0;
     }
 
-    input[type="checkbox"]:disabled + label {
+    input[type="checkbox"]:disabled+label {
         background-color: #dbdada;
     }
 }
@@ -440,6 +494,7 @@ label {
 .button:hover {
     background-color: darken($primary, 10%);
 }
+
 a:link,
 a:visited,
 a:hover,
@@ -452,6 +507,7 @@ a:active {
     display: flex;
     justify-content: center;
     align-items: center;
+
     .logo {
         width: 50%;
         height: auto;
@@ -488,28 +544,29 @@ a:active {
     }
 }
 
-  .structure {
-            width: 100%;
-            height: auto;
-        }
-        .surveyBubble{
-            width: 20%;
-            height: auto;
-        }
+.structure {
+    width: 100%;
+    height: auto;
+}
+
+.surveyBubble {
+    width: 20%;
+    height: auto;
+}
 
 
 .login {
-  height: 100vh;
+    height: 100vh;
     width: 100%;
     background: $reverse-gradient;
     position: relative;
 
-     .login-main {
+    .login-main {
         height: 100vh;
         overflow: auto;
         padding-bottom: 30px;
 
-         h1 {
+        h1 {
             text-align: center;
             font-size: 24px;
             font-weight: 600;
@@ -517,10 +574,11 @@ a:active {
 
         .login-heading {
             font-size: 24px;
-            font-weight: 800;
+            font-weight: 400;
             color: $primary;
             margin-bottom: 20px;
         }
+
         label {
             text-align: left;
         }
@@ -547,9 +605,11 @@ a:active {
             }
 
             a {
-                font-weight: 600;
+                font-weight: 400;
                 text-decoration: underline;
-                color: $white;
+                color:  #A8DDFF;
+                font-family: 'Linux Biolinum';
+                font-size: 16px;
             }
         }
     }
@@ -617,6 +677,7 @@ a:active {
 
         .image {
             position: relative;
+
             img {
                 width: 100%;
                 height: auto;
@@ -672,6 +733,7 @@ a:active {
     .content {
         padding: 10px;
         text-align: center;
+
         .station-number {
             font-size: 23px;
             font-weight: 400;
@@ -702,6 +764,7 @@ a:active {
     .station-img img {
         width: 100%;
     }
+
     .scanner-button {
         height: 10vh;
         margin-top: auto;
@@ -719,6 +782,7 @@ a:active {
             border: none;
             outline: none;
         }
+
         p {
             font-size: 14px;
             color: $white;
@@ -745,6 +809,7 @@ a:active {
         border: none;
         outline: none;
     }
+
     p {
         font-size: 14px;
         color: $white;
@@ -802,6 +867,7 @@ a:active {
 
 .admin-login {
     background: linear-gradient(to bottom, #ffffff 0%, #d3eefd 100%);
+
     .wrapper {
         margin-top: 10%;
         flex-direction: column;
@@ -809,15 +875,18 @@ a:active {
         justify-content: center;
         align-items: center;
     }
+
     .branding .logo {
         width: 248px;
     }
+
     .form-container {
         width: 505px;
 
         @media (max-width: 768px) {
             width: 100%;
         }
+
         label {
             letter-spacing: 0;
             font-size: 16px;
@@ -829,6 +898,7 @@ a:active {
             color: #3c727a;
             font-weight: 300;
         }
+
         h2 {
             font-size: 31px;
             color: #3c727a;
@@ -845,6 +915,7 @@ a:active {
             border-radius: 6px !important;
             min-height: 60px;
         }
+
         .remember {
             label {
                 font-size: 12px;
@@ -861,11 +932,13 @@ a:active {
         input {
             padding: 10px 20px;
             font-size: 14px;
+
             &::placeholder {
                 color: #ababab;
                 font-size: 14px;
             }
         }
+
         .button {
             width: 100%;
             padding: 15px 40px;
@@ -874,6 +947,7 @@ a:active {
             margin-top: 30px;
         }
     }
+
     .copy-text {
         font-size: 14px;
         color: #7d7d7d;
@@ -885,11 +959,13 @@ a:active {
 .visit {
     margin-top: 40px;
     color: #3c727a;
+
     p {
         font-size: 12px;
         letter-spacing: 2px;
         font-weight: 400;
     }
+
     a {
         text-decoration: none;
         font-size: 10px;
@@ -897,6 +973,7 @@ a:active {
         color: #3c727a;
     }
 }
+
 .safari-padding {
     padding-bottom: 120px;
 }
@@ -904,9 +981,11 @@ a:active {
 .admin-login {
     .checkbox-container {
         align-items: start;
+
         label {
             width: 20px;
             height: 20px;
+
             &::after {
                 left: 5px !important;
                 top: 0px !important;
@@ -914,6 +993,7 @@ a:active {
                 height: 13px !important;
             }
         }
+
         p {
             font-size: 12px;
         }
@@ -925,16 +1005,19 @@ a:active {
     position: relative;
     width: 100%;
     height: auto;
+
     .path-image {
         object-fit: contain;
 
         width: 100%;
         height: 100%;
     }
+
     .step {
         position: absolute;
         bottom: -100;
         left: 0;
+
         img {
             width: 40px;
             height: auto;
@@ -960,6 +1043,7 @@ a:active {
             width: 100%;
             height: 100%;
         }
+
         .details {
             position: relative;
             width: 100%;
@@ -1003,6 +1087,7 @@ a:active {
                 bottom: 0;
                 position: absolute;
                 left: 0;
+
                 .details {
                     .arrow {
                         position: absolute;
@@ -1020,6 +1105,7 @@ a:active {
                         text-align: center;
 
                     }
+
                     .step-number {
                         top: -218%;
                         right: -25%;
@@ -1027,6 +1113,7 @@ a:active {
                 }
             }
         }
+
         &__2 {
             position: absolute;
             left: 22%;
@@ -1049,6 +1136,7 @@ a:active {
                 bottom: 0;
                 position: absolute;
                 left: 0;
+
                 .details {
                     .arrow {
                         position: absolute;
@@ -1066,6 +1154,7 @@ a:active {
                         text-align: center;
 
                     }
+
                     .step-number {
                         top: -294%;
                         right: 46%;
@@ -1096,6 +1185,7 @@ a:active {
                 bottom: 0;
                 position: absolute;
                 left: 0;
+
                 .details {
                     .arrow {
                         position: absolute;
@@ -1113,6 +1203,7 @@ a:active {
                         text-align: center;
 
                     }
+
                     .step-number {
                         top: -404%;
                         right: 33%;
@@ -1143,6 +1234,7 @@ a:active {
                 bottom: 0;
                 position: absolute;
                 left: 0;
+
                 .details {
                     .arrow {
                         position: absolute;
@@ -1160,6 +1252,7 @@ a:active {
                         text-align: center;
 
                     }
+
                     .step-number {
                         top: -385%;
                         right: 46%;
@@ -1192,12 +1285,12 @@ $form-check-hover-shadow: rgba(0, 123, 255, 0.5);
         opacity: 0;
         cursor: pointer;
 
-        &:focus + .form-check-label::before {
+        &:focus+.form-check-label::before {
             outline: 2px solid $form-check-color;
             outline-offset: 2px;
         }
 
-        &:checked + .form-check-label::after {
+        &:checked+.form-check-label::after {
             display: block;
         }
     }
@@ -1239,6 +1332,7 @@ $form-check-hover-shadow: rgba(0, 123, 255, 0.5);
 .bottom-text {
     text-align: center;
     margin-top: 20px;
+
     .already-register {
         font-size: 16px;
         color: #fff;
@@ -1340,6 +1434,7 @@ $form-check-hover-shadow: rgba(0, 123, 255, 0.5);
         display: flex;
         justify-content: center;
         align-items: center;
+
         img {
             margin: 0 auto;
             height: 83px;
@@ -1347,6 +1442,7 @@ $form-check-hover-shadow: rgba(0, 123, 255, 0.5);
             object-fit: contain;
         }
     }
+
     .station-progress-heading {
         text-align: center;
         color: #303030;
@@ -1363,6 +1459,7 @@ $form-check-hover-shadow: rgba(0, 123, 255, 0.5);
     justify-content: center;
     align-items: center;
     gap: 10px;
+
     .badge {
         width: 38px;
         height: 38px;
@@ -1379,10 +1476,11 @@ $form-check-hover-shadow: rgba(0, 123, 255, 0.5);
             span {
                 display: none;
             }
+
             img {
                 display: block;
                 width: 38px;
-        height: 38px;
+                height: 38px;
             }
         }
 
@@ -1401,9 +1499,11 @@ $form-check-hover-shadow: rgba(0, 123, 255, 0.5);
             background-color: #ffff77;
             color: $primary;
         }
+
         &:nth-child(7) {
             background-color: $primary;
             position: relative;
+
             span {
                 img {
                     display: block !important;
@@ -1428,16 +1528,12 @@ $form-check-hover-shadow: rgba(0, 123, 255, 0.5);
 }
 
 .question-page {
-    background: linear-gradient(
-        to right,
-        #d5eeeb 100%,
-        #8aced0 100%
-    ) !important;
-    background: linear-gradient(
-        to right,
-        #d5eeeb 100%,
-        #8aced0 100%
-    ) !important;
+    background: linear-gradient(to right,
+            #d5eeeb 100%,
+            #8aced0 100%) !important;
+    background: linear-gradient(to right,
+            #d5eeeb 100%,
+            #8aced0 100%) !important;
 
     .branding {
         .logo {
@@ -1480,6 +1576,7 @@ $form-check-hover-shadow: rgba(0, 123, 255, 0.5);
 .survey {
     height: 100%;
     overflow: auto;
+
     .check-box-container {
         border-radius: 30px;
         box-shadow: 0px 0px 23.1px 0px #99D7F699;
@@ -1497,7 +1594,8 @@ $form-check-hover-shadow: rgba(0, 123, 255, 0.5);
             height: 9px;
         }
     }
-       .nav-pills {
+
+    .nav-pills {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         gap: 10px;
@@ -1507,6 +1605,7 @@ $form-check-hover-shadow: rgba(0, 123, 255, 0.5);
 
         .nav-item {
             border-radius: 30px;
+
             .nav-link {
                 padding: 0;
                 width: 100%;
@@ -1531,6 +1630,7 @@ $form-check-hover-shadow: rgba(0, 123, 255, 0.5);
         }
 
     }
+
     .btn-info {
         margin-top: 17%;
         background: linear-gradient(314.54deg, #2484C6 -15.39%, #A8DDFF 73%);
@@ -1540,7 +1640,7 @@ $form-check-hover-shadow: rgba(0, 123, 255, 0.5);
 
 
 .congrats-page {
-     background-image: url("../images/main-bg2.png") !important;
+    background-image: url("../images/main-bg2.png") !important;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom;
@@ -1550,26 +1650,32 @@ $form-check-hover-shadow: rgba(0, 123, 255, 0.5);
         font-size: 20px;
         padding: 0 20px;
         margin-bottom: 20px;
+        font-weight: 400;
     }
+
     .image-container {
         width: 100%;
         position: relative;
         top: 73px;
-        .image{
+
+        .image {
             opacity: 0.8;
             position: absolute;
+
             &-1 {
                 width: 52vw;
                 height: auto;
                 top: 0;
                 left: 0;
             }
+
             &-2 {
                 width: 46vw;
                 height: auto;
                 top: 106px;
                 left: 89px;
             }
+
             &-3 {
                 width: 37vw;
                 height: auto;
@@ -1584,6 +1690,7 @@ $form-check-hover-shadow: rgba(0, 123, 255, 0.5);
     width: 100%;
     display: flex;
     justify-content: center;
+
     .show-more {
         font-size: 12px;
         color: #fff;
@@ -1608,69 +1715,73 @@ $form-check-hover-shadow: rgba(0, 123, 255, 0.5);
         );
 
 
-        $colors: #A34239, #D16F52, #CDB754, #E8DDB1, #4D87C7;
+    $colors: #A34239, #D16F52, #CDB754, #E8DDB1, #4D87C7;
 
 
 
-        @for $i from 1 through length($gradients) {
-            &__#{$i} {
-                .barholder {
-                    background: nth($gradients, $i) !important;
-                }
+    @for $i from 1 through length($gradients) {
+        &__#{$i} {
+            .barholder {
+                background: nth($gradients, $i) !important;
             }
-        }
-
-        img {
-            position: absolute;
-            width: 59px;
-            height: auto;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        .barholder {
-            border-radius: 12px;
-            width: 100%;
-            height: 100%;
-            padding-left: 47px;
-            padding-right: 20px;
-            padding-top: 10px;
-
-            .rank-name {
-                font-size: 14px;
-                font-weight: 400;
-                text-align: left;
-                color: #FEFEFE;
-                margin-bottom: 5px;
-                font-family: 'Optima pro';
-
-            }
-            .rank-points {
-                font-size: 14px;
-                font-weight: 400;
-                text-align: right;
-                color: #939393;
-                font-family: 'Optima pro';
-            }
-            .progress {
-                border-radius: 12px;
-                height: 6px;
-                background-color: #EDEDEDB2;
-
-                .progress-bar {
-                    border-radius: 12px;
-                    background: #818181;
-                }
-            }
-
         }
     }
 
-    padding-bottom: 40px;
+    img {
+        position: absolute;
+        width: 59px;
+        height: auto;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .barholder {
+        border-radius: 12px;
+        width: 100%;
+        height: 100%;
+        padding-left: 47px;
+        padding-right: 20px;
+        padding-top: 10px;
+
+        .rank-name {
+            font-size: 14px;
+            font-weight: 400;
+            text-align: left;
+            color: #FEFEFE;
+            margin-bottom: 5px;
+            font-family: 'Optima pro';
+            letter-spacing: 1px;
+
+        }
+
+        .rank-points {
+            font-size: 14px;
+            font-weight: 400;
+            text-align: right;
+            color: #939393;
+            font-family: 'Optima pro';
+            letter-spacing: 1px;
+        }
+
+        .progress {
+            border-radius: 12px;
+            height: 6px;
+            background-color: #EDEDEDB2;
+
+            .progress-bar {
+                border-radius: 12px;
+                background: #818181;
+            }
+        }
+
+    }
+}
 }
 
 footer {
     box-sizing: border-box;
+
     a {
         text-decoration: underline !important;
     }

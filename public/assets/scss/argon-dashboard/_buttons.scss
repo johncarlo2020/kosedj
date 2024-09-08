@@ -3,6 +3,8 @@
   letter-spacing: $a-letter-spacing;
   text-transform: none;
   box-shadow: $btn-box-shadow;
+  border: none;
+  outline: none;
 
   &:not([class*="btn-outline-"]) {
     border: 0;
@@ -46,7 +48,7 @@
     padding: $btn-padding-y-xs $btn-padding-x-xs;
     font-size: $btn-font-size-xs;
   }
-  
+
   // Button Just Icon
 
   &.btn-icon-only {
