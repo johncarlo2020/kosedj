@@ -3,8 +3,6 @@
   letter-spacing: $a-letter-spacing;
   text-transform: none;
   box-shadow: $btn-box-shadow;
-  border: none;
-  outline: none;
 
   &:not([class*="btn-outline-"]) {
     border: 0;

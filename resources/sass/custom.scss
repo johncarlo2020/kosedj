@@ -1723,6 +1723,10 @@ $form-check-hover-shadow: rgba(0, 123, 255, 0.5);
         &__#{$i} {
             .barholder {
                 background: nth($gradients, $i) !important;
+
+                .progress-bar {
+                    background: nth($colors, $i) !important;
+                }
             }
         }
     }
@@ -1771,7 +1775,6 @@ $form-check-hover-shadow: rgba(0, 123, 255, 0.5);
 
             .progress-bar {
                 border-radius: 12px;
-                background: #818181;
             }
         }
 
