@@ -43,7 +43,6 @@
             text-decoration: none;
             color: #fff;
         }
-
     </style>
     <div class="pt-4 container-fluid home start completed-screen congrats-page">
         <div class="col-12 d-flex justify-content-center">
@@ -55,16 +54,32 @@
         </h1>
         <div class="my-3 ranking-container">
             @foreach ($top as $index => $item)
-                <div class="ranking ranking__{{$item['survey']}} mb-2 {{ $index >= 3 ? 'd-none' : '' }}">
-                    <img src="{{ asset('images/result' . $item['survey'] . '.png') }}" alt="">
-                    <div class="barholder">
-                        <p class="rank-name">{{ $item['survey_name'] }}</p>
-                        <div class="progress">
-                            <div class="progress-bar" roley="progressbar" style="width: {{ $item['percentage_answered'] }}%;" aria-valuenow="{{$item['percentage_answered']}}" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <p class="rank-points">{{ $item['count'] }}/{{ $item['total'] }}</p>
+            <div
+                class="ranking ranking__{{ $item['survey'] }} mb-2 {{
+                    $index >= 3 ? 'd-none' : ''
+                }}"
+            >
+                <img
+                    src="{{ asset('images/bubble' . $item['survey'] . '.png') }}"
+                    alt=""
+                />
+                <div class="barholder">
+                    <p class="rank-name">{{ $item["survey_name"] }}</p>
+                    <div class="progress">
+                        <div
+                            class="progress-bar"
+                            roley="progressbar"
+                            style="width: {{ $item['percentage_answered'] }}%;"
+                            aria-valuenow="{{ $item['percentage_answered'] }}"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                        ></div>
                     </div>
+                    <p class="rank-points">
+                        {{ $item["count"] }}/{{ $item["total"] }}
+                    </p>
                 </div>
+            </div>
             @endforeach
         </div>
         <div class="btn-container">
@@ -74,21 +89,24 @@
 
     <footer class="p-2">
         <p>Visit our official website</p>
-        <img class="footer-logo" src="{{ asset('images/logo-large.png') }}" alt="" />
-        <br>
+        <img
+            class="footer-logo"
+            src="{{ asset('images/logo-large.png') }}"
+            alt=""
+        />
+        <br />
         <a href="https://www.kose.com.my">Click Here for more Information</a>
     </footer>
 
-
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const showMoreBtn = document.querySelector('.show-more');
-            const hiddenItems = document.querySelectorAll('.ranking.d-none');
+        document.addEventListener("DOMContentLoaded", function () {
+            const showMoreBtn = document.querySelector(".show-more");
+            const hiddenItems = document.querySelectorAll(".ranking.d-none");
 
-            showMoreBtn.addEventListener('click', function (e) {
+            showMoreBtn.addEventListener("click", function (e) {
                 e.preventDefault();
-                hiddenItems.forEach(item => item.classList.remove('d-none'));
-                showMoreBtn.style.display = 'none';
+                hiddenItems.forEach((item) => item.classList.remove("d-none"));
+                showMoreBtn.style.display = "none";
             });
         });
     </script>
