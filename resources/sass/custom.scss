@@ -1576,6 +1576,7 @@ $form-check-hover-shadow: rgba(0, 123, 255, 0.5);
 .survey {
     height: 100%;
     overflow: auto;
+    min-height: 100vh;
 
     .check-box-container {
         border-radius: 30px;
