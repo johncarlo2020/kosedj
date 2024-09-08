@@ -1794,6 +1794,7 @@ footer {
 .verify-email {
     padding: 40px;
     font-family: 'Optima pro';
+    height:calc(100vh - 90px);
 
     .branding {
         img {
@@ -1817,5 +1818,23 @@ footer {
         background: linear-gradient(314.54deg, #2484C6 -15.39%, #A8DDFF 73%);
         font-family: 'Optima pro';
         font-size: 12px;
+    }
+}
+footer {
+    padding: 20px;
+    margin-top: auto;
+    text-align: center;
+    .logout-text {
+        color: #A8DDFF;
+        font-size: 16px;
+        text-align: center;
+        background-color: transparent;
+        outline: none;
+        border: none;
+    }
+    .footer-text {
+        font-size: 12px;
+        font-family: 'Optima pro';
+        text-decoration: none !important;
     }
 }
