@@ -22,7 +22,7 @@
                     <a
                         href="{{ route('congrats') }}"
                         class="mt-5 mb-5 discover-btn btn rounded-pill"
-                        >Start Survey</a
+                        >My Result</a
                     >
                     @else
                     <a
