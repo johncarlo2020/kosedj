@@ -50,7 +50,8 @@
         </div>
         <h1 class="mt-5 well">
             Well done {{ auth()->user()->fname }} ! <br />
-            Head to the ticket counter for your skin consultation
+            Pick a suggestion card based on your body condition and DIY your
+            beauty tea.
         </h1>
         <div class="my-3 ranking-container">
             @foreach ($top as $index => $item)

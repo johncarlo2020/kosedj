@@ -46,11 +46,7 @@ class StationSeeder extends Seeder
                 'survey_id' => 1,
             ],
             [
-                'name' => 'Dry lips and skin',
-                'survey_id' => 1,
-            ],
-            [
-                'name' => 'Dry hair and skin',
+                'name' => 'Dry hair, lips and skin',
                 'survey_id' => 1,
             ],
             [
@@ -79,10 +75,6 @@ class StationSeeder extends Seeder
             ],
             [
                 'name' => 'Concerned about dark spots on the face and limbs',
-                'survey_id' => 2,
-            ],
-            [
-                'name' => 'Rough & chapped heels all year round',
                 'survey_id' => 2,
             ],
             [
