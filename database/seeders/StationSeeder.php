@@ -102,10 +102,6 @@ class StationSeeder extends Seeder
                 'survey_id' => 2,
             ],
             [
-                'name' => 'Pale complexion and skin lack luster',
-                'survey_id' => 2,
-            ],
-            [
                 'name' => 'Severe menstrual pain',
                 'survey_id' => 2,
             ],
@@ -146,7 +142,7 @@ class StationSeeder extends Seeder
                 'survey_id' => 4,
             ],
             [
-                'name' => 'Feel uncomfortable when nervous or angry',
+                'name' => 'Easily agitated',
                 'survey_id' => 4,
             ],
             [
@@ -162,15 +158,11 @@ class StationSeeder extends Seeder
                 'survey_id' => 4,
             ],
             [
-                'name' => 'Often & Easily irritable',
-                'survey_id' => 4,
-            ],
-            [
                 'name' => 'The body is easily swell / water retention in the body',
                 'survey_id' => 5,
             ],
             [
-                'name' => 'Heavy and weak body',
+                'name' => 'Body feeling heavy and weak',
                 'survey_id' => 5,
             ],
             [
