@@ -290,38 +290,41 @@ class StationController extends Controller
 
         $stations = Station::pluck('name', 'id');
 
-        $averageTimespentByStation = StationUser::where('user_id', $user->id)
-            ->orderBy('id', 'asc')
-            ->get();
-        $total = StationUser::where('user_id', $user->id)
-            ->orderBy('id', 'asc')
-            ->sum('time_spent');
-        $totalMinutes = $total / 60;
-        $totalMinutes = number_format($totalMinutes, 2);
+        $surveys = Survey::with('question')->get();
 
-        $userStations = $user->stationUser->pluck('station_id')->toArray();
-        $numStations = count($userStations);
+        // Prepare data to store surveys with percentage
+        $surveyData = [];
 
-        $user->stations = $stations->map(function ($name, $id) use ($userStations, $user) {
-            $spent = StationUser::where('user_id', $user->id)
-                ->where('station_id', $id)
-                ->first();
-            if (!$spent) {
-                $minute = 0;
-            } else {
-                $seconds = $spent->time_spent;
-                $minute = $seconds / 60;
-                $minute = number_format($minute, 2);
-            }
-            return [
-                'name' => $name,
-                'value' => in_array($id, $userStations),
-                'time_spent' => $minute,
-                'id' => $id,
+        foreach ($surveys as $survey) {
+            // Get total number of questions for the survey
+            $totalQuestions = $survey->questions->count();
+
+            // Count the number of answered questions by the user
+            $answeredQuestions = Answers::where('user_id', $user->id)
+                ->whereIn('question_id', $survey->questions->pluck('id'))
+                ->count();
+
+            // Calculate percentage
+            $percentageAnswered = $totalQuestions > 0 ? ($answeredQuestions / $totalQuestions) * 100 : 0;
+
+            // Store survey and its percentage
+            $surveyData[] = [
+                'survey' => $survey->id,
+                'survey_name' => $survey->name,
+                'percentage_answered' => $percentageAnswered,
+                'count' => $answeredQuestions,
+                'total' => $totalQuestions,
             ];
-        });
+        }
 
-        return view('userData', compact('user', 'totalMinutes', 'permission'));
+        // Sort by highest percentage first, take the top 3, and reset the indexes
+        $top = collect($surveyData)
+            ->sortByDesc('percentage_answered') // Sort by highest percentage first
+            ->values() // Reset the array indexes to 0, 1, 2
+            ->toArray();
+        // dd($top);
+
+        return view('userData', compact('user', 'top', 'permission'));
     }
 
     public function verify(User $user)

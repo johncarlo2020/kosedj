@@ -140,53 +140,12 @@
     </div>
 </div>
 <div class="row mt-4">
-    <div class="col-lg-6 mb-lg-0 mb-4">
+    <div class="col-lg-12 mb-lg-0 mb-4">
         <div class="card z-index-2 h-100">
             <div class="card-body p-3">
                 <figure class="highcharts-figure">
                     <div id="container2"></div>
                 </figure>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-lg-6">
-        <div class="card">
-            <div class="card-header pb-0 p-3">
-                <h6 class="mb-0">Stations</h6>
-            </div>
-            <div class="card-body p-3">
-                <ul class="list-group">
-                    @foreach ($data['stations'] as $station)
-                    <li
-                        class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg"
-                    >
-                        <div class="d-flex align-items-center">
-                            <div
-                                class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center"
-                            >
-                                <i
-                                    class="ni ni-mobile-button text-white opacity-10"
-                                ></i>
-                            </div>
-                            <div class="d-flex flex-column">
-                                <h6 class="mb-1 text-dark text-sm">
-                                    {{ $station["name"] }}
-                                </h6>
-                                <span class="text-xs"
-                                    >Average Time :
-                                    <span class="font-weight-bold"
-                                        >{{
-                                            $station["average_timespent"]
-                                        }}
-                                        minutes</span
-                                    ></span
-                                >
-                            </div>
-                        </div>
-                    </li>
-                    @endforeach
-                </ul>
             </div>
         </div>
     </div>
