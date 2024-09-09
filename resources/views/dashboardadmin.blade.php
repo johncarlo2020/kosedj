@@ -1,6 +1,4 @@
-@extends('layouts.admin')
-
-@section('content')
+@extends('layouts.admin') @section('content')
 <div class="row">
     <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
         <div class="card">
@@ -8,19 +6,33 @@
                 <div class="row">
                     <div class="col-8">
                         <div class="numbers">
-                            <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Customers</p>
+                            <p
+                                class="text-sm mb-0 text-uppercase font-weight-bold"
+                            >
+                                Total Customers
+                            </p>
                             <h5 class="font-weight-bolder">
-                                {{ $data['usersCount'] }}
+                                {{ $data["usersCount"] }}
                             </h5>
-                            {{-- <p class="mb-0">
-                                    <span class="text-success text-sm font-weight-bolder">+55%</span>
-                                    since yesterday
-                                </p> --}}
+                            {{--
+                            <p class="mb-0">
+                                <span
+                                    class="text-success text-sm font-weight-bolder"
+                                    >+55%</span
+                                >
+                                since yesterday
+                            </p>
+                            --}}
                         </div>
                     </div>
                     <div class="col-4 text-end">
-                        <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-                            <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                        <div
+                            class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle"
+                        >
+                            <i
+                                class="ni ni-money-coins text-lg opacity-10"
+                                aria-hidden="true"
+                            ></i>
                         </div>
                     </div>
                 </div>
@@ -33,19 +45,33 @@
                 <div class="row">
                     <div class="col-8">
                         <div class="numbers">
-                            <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Customer</p>
+                            <p
+                                class="text-sm mb-0 text-uppercase font-weight-bold"
+                            >
+                                Today's Customer
+                            </p>
                             <h5 class="font-weight-bolder">
-                                {{ $data['userToday'] }}
+                                {{ $data["userToday"] }}
                             </h5>
-                            {{-- <p class="mb-0">
-                                    <span class="text-success text-sm font-weight-bolder">+3%</span>
-                                    since last week
-                                </p> --}}
+                            {{--
+                            <p class="mb-0">
+                                <span
+                                    class="text-success text-sm font-weight-bolder"
+                                    >+3%</span
+                                >
+                                since last week
+                            </p>
+                            --}}
                         </div>
                     </div>
                     <div class="col-4 text-end">
-                        <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
-                            <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
+                        <div
+                            class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle"
+                        >
+                            <i
+                                class="ni ni-world text-lg opacity-10"
+                                aria-hidden="true"
+                            ></i>
                         </div>
                     </div>
                 </div>
@@ -58,16 +84,24 @@
                 <div class="row">
                     <div class="col-8">
                         <div class="numbers">
-                            <p class="text-sm mb-0 text-uppercase font-weight-bold">Completion Rate</p>
+                            <p
+                                class="text-sm mb-0 text-uppercase font-weight-bold"
+                            >
+                                Completion Rate
+                            </p>
                             <h5 class="font-weight-bolder">
-                                {{ $data['percentage'] }}%
+                                {{ $data["percentage"] }}%
                             </h5>
-
                         </div>
                     </div>
                     <div class="col-4 text-end">
-                        <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-                            <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
+                        <div
+                            class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle"
+                        >
+                            <i
+                                class="ni ni-paper-diploma text-lg opacity-10"
+                                aria-hidden="true"
+                            ></i>
                         </div>
                     </div>
                 </div>
@@ -80,15 +114,24 @@
                 <div class="row">
                     <div class="col-8">
                         <div class="numbers">
-                            <p class="text-sm mb-0 text-uppercase font-weight-bold">Customers Finished</p>
+                            <p
+                                class="text-sm mb-0 text-uppercase font-weight-bold"
+                            >
+                                Customers Finished
+                            </p>
                             <h5 class="font-weight-bolder">
-                                {{ $data['completedUsers'] }}
+                                {{ $data["completedUsers"] }}
                             </h5>
                         </div>
                     </div>
                     <div class="col-4 text-end">
-                        <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
-                            <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
+                        <div
+                            class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle"
+                        >
+                            <i
+                                class="ni ni-cart text-lg opacity-10"
+                                aria-hidden="true"
+                            ></i>
                         </div>
                     </div>
                 </div>
@@ -99,17 +142,13 @@
 <div class="row mt-4">
     <div class="col-lg-6 mb-lg-0 mb-4">
         <div class="card z-index-2 h-100">
-
             <div class="card-body p-3">
                 <figure class="highcharts-figure">
                     <div id="container2"></div>
                 </figure>
             </div>
-
-
         </div>
     </div>
-
 
     <div class="col-lg-6">
         <div class="card">
@@ -119,22 +158,34 @@
             <div class="card-body p-3">
                 <ul class="list-group">
                     @foreach ($data['stations'] as $station)
-                    <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                    <li
+                        class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg"
+                    >
                         <div class="d-flex align-items-center">
-                            <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
-                                <i class="ni ni-mobile-button text-white opacity-10"></i>
+                            <div
+                                class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center"
+                            >
+                                <i
+                                    class="ni ni-mobile-button text-white opacity-10"
+                                ></i>
                             </div>
                             <div class="d-flex flex-column">
-                                <h6 class="mb-1 text-dark text-sm">{{ $station['name'] }}</h6>
-                                <span class="text-xs">Average Time : <span
-                                        class="font-weight-bold">{{ $station['average_timespent'] }}
-                                        minutes</span></span>
+                                <h6 class="mb-1 text-dark text-sm">
+                                    {{ $station["name"] }}
+                                </h6>
+                                <span class="text-xs"
+                                    >Average Time :
+                                    <span class="font-weight-bold"
+                                        >{{
+                                            $station["average_timespent"]
+                                        }}
+                                        minutes</span
+                                    ></span
+                                >
                             </div>
                         </div>
                     </li>
                     @endforeach
-
-
                 </ul>
             </div>
         </div>
@@ -150,15 +201,19 @@
                         </div>
                         <div class="col-auto">
                             <div class="form-group mb-0 mr-3 ml-2">
-                                <select class="form-control form-control-sm" id="date-format-select">
+                                <select
+                                    class="form-control form-control-sm"
+                                    id="date-format-select"
+                                >
                                     @foreach ($data['dates'] as $key => $date)
-                                    <option value="{{ $date['date'] }}">{{ $date['date'] }}</option>
+                                    <option value="{{ $date['date'] }}">
+                                        {{ $date["date"] }}
+                                    </option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <div class="card-body p-3">
                     <figure class="highcharts-figure">
@@ -169,68 +224,13 @@
         </div>
     </div>
 
-    <div class="row mt-4">
-        <div class="col-lg-12 mb-lg-0 mb-4">
-            <div class="card ">
-                <div class="card-header pb-0 p-3">
-                    <div class="d-flex justify-content-between">
-                        <h6 class="mb-2">Customer</h6>
-                    </div>
-                </div>
-                <div class="table-responsive">
-                    <table class="table align-items-center ">
-                        <tbody>
-                            @foreach ($data['users'] as $user)
-                            <tr>
-                                <td class="w-5">
-                                    <div class="d-flex px-2 py-1 align-items-center">
-                                        <div class="ms-4">
-                                            <h6 class="text-sm mb-0">{{ $user->id }}</h6>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="w-10">
-                                    <div class="d-flex px-2 py-1 align-items-center">
-                                        <div class="ms-4">
-                                            <p class="text-xs font-weight-bold mb-0">Name</p>
-                                            <h6 class="text-sm mb-0">{{ $user->fname }} {{ $user->lname }}
-                                            </h6>
-                                        </div>
-                                    </div>
-                                </td>
-                                @foreach ($user['stations'] as $station)
-                                <td>
-                                    <div class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">{{ $station['name'] }}
-                                        </p>
-                                        <h6
-                                            class="text-sm mb-0 {{ $station['value'] ? 'text-success' : 'text-danger' }}">
-                                            {{ $station['value'] ? 'Yes' : 'No' }}
-                                        </h6>
-
-                                    </div>
-                                </td>
-                                @endforeach
-
-
-                            </tr>
-                            @endforeach
-
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-
-
-
-
-    </div>
     <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
-    <script src="{{ asset('assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
+    <script src="{{
+            asset('assets/js/plugins/perfect-scrollbar.min.js')
+        }}"></script>
+    <script src="{{
+            asset('assets/js/plugins/smooth-scrollbar.min.js')
+        }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -249,7 +249,6 @@
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-
 
     <script>
         var labels = [];
@@ -705,3 +704,4 @@
         });
     </script>
     @endsection
+</div>
