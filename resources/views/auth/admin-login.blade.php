@@ -24,7 +24,7 @@
     <body class="main admin-login">
         <div class="contaniner wrapper d-flex justify-container-center">
             <div class="branding-container">
-                @include('components.branding')
+                @include('components.brandingDark')
             </div>
             <div
                 class="p-4 mx-auto bg-white border rounded shadow-sm form-container"
@@ -69,7 +69,12 @@
                         <label for="remember"> </label>
                         <p>Remember me</p>
                     </div>
-                    <button type="submit" class="shadow-sm btn button admin-login">Login</button>
+                    <button
+                        type="submit"
+                        class="shadow-sm btn button admin-login"
+                    >
+                        Login
+                    </button>
                 </form>
             </div>
             <p class="copy-text">Wowsome © Copyright 2024</p>
