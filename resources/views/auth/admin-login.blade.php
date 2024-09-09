@@ -69,7 +69,7 @@
                         <label for="remember"> </label>
                         <p>Remember me</p>
                     </div>
-                    <button type="submit" class="btn button">Login</button>
+                    <button type="submit" class="shadow-sm btn button admin-login">Login</button>
                 </form>
             </div>
             <p class="copy-text">Wowsome © Copyright 2024</p>

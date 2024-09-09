@@ -868,6 +868,9 @@ a:active {
 .admin-login {
     background: linear-gradient(to bottom, #ffffff 0%, #d3eefd 100%);
 
+    .admin-login{
+        background: #1497DD !important;
+    }
     .wrapper {
         margin-top: 10%;
         flex-direction: column;
