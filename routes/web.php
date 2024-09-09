@@ -47,6 +47,7 @@ Route::group(['middleware' => ['client', 'verified']], function () {
     Route::get('/survey', 'App\Http\Controllers\StationController@survey')->name('survey');
     Route::post('/answerSurvey', 'App\Http\Controllers\StationController@answerSurvey')->name('answerSurvey');
     Route::get('/congrats', 'App\Http\Controllers\StationController@congrats')->name('congrats');
+    Route::post('/bypass', 'App\Http\Controllers\StationController@bypass')->name('bypass');
 });
 
 require __DIR__ . '/auth.php';

@@ -471,14 +471,14 @@ select {
     box-sizing: border-box;
 }
 
-input:focus {
-    outline: none;
-    border: 2px solid $primary;
+// input:focus {
+//     outline: none;
+//     border: 2px solid $primary;
 
-    &::-webkit-input-placeholder {
-        color: $gray;
-    }
-}
+//     &::-webkit-input-placeholder {
+//         color: $gray;
+//     }
+// }
 
 input:-internal-autofill-selected {
     background-color: #fff !important;

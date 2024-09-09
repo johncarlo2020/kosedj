@@ -16,6 +16,21 @@ use Carbon\Carbon;
 
 class StationController extends Controller
 {
+    public function bypass()
+    {
+        $userId = auth()->id();
+        dd($userId);
+
+        $user = User::find($userId);
+
+        return $user;
+        $user->email_verified_at = Carbon::now(); // Update email verification timestamp
+        $user->bypass = true; // Assuming 'bypass' is a column in the users table
+        $user->save();
+
+        return $user;
+    }
+
     public function index(Station $station)
     {
         $user = StationUser::where('user_id', auth()->id())

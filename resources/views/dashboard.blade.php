@@ -8,7 +8,7 @@
                 <div class="mt-3 text-center col-12 text-content welcome">
                     <h1 class="mt-5 heading">Where Wellness Embraces Beauty</h1>
                     <h1 class="mt-2 heading">
-                        Japanese Holistic Kampology Skincare
+                        Japanese Holistic Kampology Skincare
                     </h1>
 
                     <div class="mt-3 branding">
