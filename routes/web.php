@@ -32,6 +32,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin', 'App\Http\Controllers\StationController@admin')->name('admin');
     Route::get('/admin/users', 'App\Http\Controllers\StationController@users')->name('users');
     Route::get('/admin/{user}', 'App\Http\Controllers\StationController@userData')->name('userData');
+    Route::post('/admin/verify/{user}', 'App\Http\Controllers\StationController@verify')->name('verify.email');
     Route::post('/admin/check', 'App\Http\Controllers\StationController@check')->name('check');
 });
 

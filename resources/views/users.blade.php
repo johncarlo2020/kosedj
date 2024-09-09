@@ -1,11 +1,11 @@
-@extends('layouts.admin')
-
-@section('content')
+@extends('layouts.admin') @section('content')
     <style>
         #customer-table tbody tr {
             cursor: pointer;
         }
     </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
     <div class="mt-4 row">
         <div class="mb-4 col-lg-12 mb-lg-0">
             <div class="card">
@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div class="table-responsive">
-                    <table id="customer-table" class="display nowrap" style="width:100%">
+                    <table id="customer-table" class="display nowrap" style="width: 100%">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -23,11 +23,8 @@
                                 <th>Email</th>
                                 <th>Number</th>
                                 <th>Country</th>
-
-
-                                @foreach ($data['stations'] as $station)
-                                    <th>{{ $station['name'] }}</th>
-                                @endforeach
+                                <th>Verified</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -38,11 +35,21 @@
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->number }}</td>
                                     <td>{{ $user->country }}</td>
+                                    <td class="{{ $user->email_verified_at ? 'text-success' : 'text-danger' }}">
+                                        <i
+                                            class="bi {{ $user->email_verified_at ? 'bi-check-circle' : 'bi-x-circle' }}"></i>
+                                    </td>
 
-                                    @foreach ($user['stations'] as $station)
-                                        <td class="text-sm mb-0 {{ $station['value'] ? 'text-success' : 'text-danger' }}">
-                                            {{ $station['value'] ? 'Yes' : 'No' }}</td>
-                                    @endforeach
+                                    <td>
+                                        @if (!$user->email_verified_at)
+                                            <form action="{{ route('verify.email', $user->id) }}" method="POST">
+                                                @csrf
+                                                <button type="submit" class="btn btn-primary">
+                                                    Verify
+                                                </button>
+                                            </form>
+                                        @endif
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -53,10 +60,10 @@
     </div>
 
     <!-- Include DataTables CSS -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css" />
 
     <!-- Include DataTables Buttons CSS -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/3.0.2/css/buttons.dataTables.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/3.0.2/css/buttons.dataTables.css" />
     <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
@@ -85,33 +92,34 @@
         //     });
         // });
         var permissionName = "{{ $permission }}";
-        var table = $('#customer-table').DataTable({
+        var table = $("#customer-table").DataTable({
             responsive: true,
             dom: "<'row'<'col-sm-12 col-md-3'l><'col-sm-6 col-md-6 align-items-end'B><'col-sm-12 col-md-3'f>>" +
-                "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
-            buttons: [
-                'copy', 'csv', 'excel', 'pdf', 'print'
-            ],
+                "<'row'<'col-sm-12'tr>>" +
+                "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+            buttons: ["copy", "csv", "excel", "pdf", "print"],
             order: [
-                [0, 'desc']
-            ]
+                [0, "desc"]
+            ],
         });
-     
 
         // Move the search input to the left side
-        $('.dataTables_filter').addClass('float-start');
-        $('.dataTables_filter label').addClass('w-100');
+        $(".dataTables_filter").addClass("float-start");
+        $(".dataTables_filter label").addClass("w-100");
 
-        $('#customer-table tbody').on('click', 'tr', function() {
-
+        $("#customer-table tbody").on("click", "tr", function() {
             // Get data from the clicked row
             var data = table.row(this).data();
 
             // Extract user ID from the clicked row's data
-            var userId = $(this).data('user-id');
+            var userId = $(this).data("user-id");
 
             // Redirect to the user data route with the user ID
-            window.location.href = "{{ route('userData', ['user' => ':userId']) }}".replace(':userId', userId);
+            window.location.href =
+                "{{ route('userData', ['user' => ':userId']) }}".replace(
+                    ":userId",
+                    userId
+                );
         });
     </script>
 @endsection

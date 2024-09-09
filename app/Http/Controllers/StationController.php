@@ -324,6 +324,15 @@ class StationController extends Controller
         return view('userData', compact('user', 'totalMinutes', 'permission'));
     }
 
+    public function verify(User $user)
+    {
+        $user->email_verified_at = Carbon::now(); // Update email verification timestamp
+        $user->bypass = true; // Assuming 'bypass' is a column in the users table
+        $user->save();
+
+        return redirect()->route('users');
+    }
+
     public function check(Request $request)
     {
         $check = StationUser::where('user_id', $request->user_id)
