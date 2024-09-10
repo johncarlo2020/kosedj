@@ -9,9 +9,21 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-class User extends Authenticatable implements MustVerifyEmail
+use App\Notifications\CustomVerifyEmail;
+use Illuminate\Support\Facades\URL;
+class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
+
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new CustomVerifyEmail($this->verificationUrl()));
+    }
+
+    protected function verificationUrl()
+    {
+        return URL::temporarySignedRoute('verification.verify', now()->addMinutes(config('auth.verification.expire', 60)), ['id' => $this->getKey(), 'hash' => sha1($this->getEmailForVerification())]);
+    }
 
     /**
      * The attributes that are mass assignable.
