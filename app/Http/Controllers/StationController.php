@@ -13,9 +13,37 @@ use App\Models\Survey;
 use DB;
 use Auth;
 use Carbon\Carbon;
-
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 class StationController extends Controller
 {
+    public function test()
+    {
+        $email = 'sekkiseiblue@gmail.com';
+
+        $otp = rand(100000, 999999);
+
+        $mail = new PHPMailer();
+        $mail->isSMTP();
+        $mail->Host = 'mail.event.sekkiseiblue.com.my';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'verification@event.sekkiseiblue.com.my';
+        $mail->Password = 'm@4IuAzL5Bt&';
+        $mail->SMTPSecure = 'ssl';
+        $mail->Port = 465;
+        $mail->setFrom('verification@event.sekkiseiblue.com.my', 'Sekkisei Event');
+        $mail->addAddress($email);
+        $mail->isHTML(true);
+        $mail->Subject = "Sekkisei Verification: Your Verification Code: $otp";
+
+        $mail->Body = "Sekkieiblue: Your Verification Code: $otp - Sekkieiblue. NEVER share this code with others.";
+
+        if (!$mail->send()) {
+            echo 'Mailer Error: ' . $mail->ErrorInfo;
+        } else {
+            echo 'Test email sent successfully!';
+        }
+    }
     public function index(Station $station)
     {
         $user = StationUser::where('user_id', auth()->id())

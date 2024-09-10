@@ -28,6 +28,8 @@ Route::get('/admin/login', function () {
     return view('auth.admin-login');
 });
 
+Route::get('/test', 'App\Http\Controllers\StationController@test')->name('test');
+
 Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin', 'App\Http\Controllers\StationController@admin')->name('admin');
     Route::get('/admin/users', 'App\Http\Controllers\StationController@users')->name('users');
