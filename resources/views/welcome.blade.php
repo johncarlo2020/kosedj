@@ -46,8 +46,8 @@
         }
     </style>
 
-    <body class="antialiased home">
-        <div class="py-5 container-fluid">
+    <body class="antialiased home discover-page">
+        <div class="pt-5 container-fluid">
             <div class="row">
                 <div
                     class="col-12 d-flex justify-content-center align-items-center"
@@ -57,7 +57,7 @@
                 <div class="mt-3 text-center col-12 text-content welcome">
                     <h1 class="mt-5 heading">Where Wellness Embraces Beauty</h1>
                     <h1 class="mt-2 heading">
-                        Japanese Holistic Kampology Skincare
+                        Japanese Holistic Kampology Skincare
                     </h1>
                     <div class="mt-3 branding">
                         <img
@@ -66,21 +66,24 @@
                             alt=""
                         />
                     </div>
-                    <a
-                        href="{{ route('register') }}"
-                        class="mt-5 mb-5 discover-btn btn rounded-pill"
-                        >Sign Up</a
-                    >
-                    <p class="already-register">Already Registered</p>
-                    <p class="already-register">
-                        Please Login
-                        <a href="{{ route('login') }}" class="">here</a>
-                    </p>
+                    <p class="my-2 text-white">Start Survey</p>
+                    <div class="button-container">
+                        <a
+                            href="{{ route('survey') }}"
+                            class="language-btn btn rounded-pill"
+                            >English</a
+                        >
+                        <a
+                            href="{{ route('survey') }}"
+                            class="language-btn btn rounded-pill"
+                            >华语</a
+                        >
+                    </div>
                 </div>
             </div>
         </div>
         <footer>
-            <a href="https://wowsome.com.my/">Powered by WOWSOME®2024</a>
+            <a href="https://wowsome.com.my/">Powered by WOWSOME® 2024</a>
         </footer>
     </body>
 </html>

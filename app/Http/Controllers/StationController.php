@@ -53,6 +53,18 @@ class StationController extends Controller
         return view('station', compact('station', 'user'));
     }
 
+    public function lang(Request $request)
+    {
+        $data = [];
+        $userId = auth()->id();
+
+        $user = User::find($userId);
+        $user->lang = $request->lang;
+        $user->save();
+
+        return $user;
+    }
+
     public function answerSurvey(Request $request)
     {
         $data = [];
@@ -73,6 +85,7 @@ class StationController extends Controller
     public function congrats()
     {
         $userId = auth()->id();
+        $lang= auth()->user()->lang;
 
         $surveys = Survey::with('question')->get();
 
@@ -93,6 +106,7 @@ class StationController extends Controller
             $surveyData[] = [
                 'survey' => $survey->id,
                 'survey_name' => $survey->name,
+                'survey_cn_name' => $survey->cn_name,
                 'percentage_answered' => $percentageAnswered,
                 'count' => $answeredQuestions,
                 'total' => $totalQuestions,
@@ -105,14 +119,15 @@ class StationController extends Controller
             ->values() // Reset the array indexes to 0, 1, 2
             ->toArray();
 
-        return view('congrats', compact('top'));
+        return view('congrats', compact('top','lang'));
     }
 
     public function survey()
     {
         $optionsList = Survey::get();
+        $lang= auth()->user()->lang;
 
-        return view('survey', compact('optionsList'));
+        return view('survey', compact('optionsList','lang'));
     }
 
     public function welcome()

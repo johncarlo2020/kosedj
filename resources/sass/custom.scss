@@ -1841,3 +1841,38 @@ footer {
         text-decoration: none !important;
     }
 }
+
+.language-btn {
+    background-color: #AABDCA;
+    color: #303030;
+    min-width: 30vw;
+    box-shadow: 0px 0px 23.1px 0px #99d7f641;
+    &:hover {
+        opacity: 0.7;
+    }
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.discover-page {
+    p {
+        font-size: 17px;
+        color: #fff;
+        font-weight: 300;
+    }
+
+    footer {
+        a {
+            font-family: 'Optima pro';
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-decoration: none !important;
+        }
+    }
+}

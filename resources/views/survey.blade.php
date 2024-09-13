@@ -32,9 +32,16 @@
                                         <div class="step">
                                             <div class="mb-3 text-center text-white step-name">
                                                 <div class="mt-3 branding">
+                                                    @if ($lang=='cn')
                                                     <img class="surveyBubble"
-                                                        src="{{ asset('images/Survey' . $index + 1 . '.png') }}"
-                                                        alt="" />
+                                                    src="{{ asset('images/Surveycn' . $index + 1 . '.png') }}"
+                                                    alt="" />
+                                                    @else
+                                                    <img class="surveyBubble"
+                                                    src="{{ asset('images/Survey' . $index + 1 . '.png') }}"
+                                                    alt="" />
+                                                    @endif
+
                                                 </div>
                                             </div>
                                             <div class="px-4 py-4 check-box-container">
@@ -44,7 +51,15 @@
                                                             id="question-{{ $question->id }}" name="question[]"
                                                             value="{{ $question->id }}">
                                                         <label class="form-check-label"
-                                                            for="question-{{ $question->id }}">{{ $question->name }}</label>
+                                                            for="question-{{ $question->id }}">
+                                                            @if ($lang=='cn')
+                                                                {{ $question->cn_name }}
+                                                            @else
+                                                                {{ $question->name }}
+
+                                                            @endif
+
+                                                        </label>
                                                     </div>
                                                 @endforeach
                                             </div>
