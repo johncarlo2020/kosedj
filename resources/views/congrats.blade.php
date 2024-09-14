@@ -50,8 +50,8 @@
         </div>
         <h1 class="mt-5 well">
             @if ($lang == 'cn')
-            干得好 {{ auth()->user()->fname }} ! <br />
-            根据你的身体状况选择一张建议卡，自己动手做你的美容茶吧
+            做得好 {{ auth()->user()->fname }} ! <br />
+            根据您的体质需求选择一张建议卡，做您的美容茶吧
             @else
             Well done {{ auth()->user()->fname }} ! <br />
             Pick a suggestion card based on your body condition and DIY your
