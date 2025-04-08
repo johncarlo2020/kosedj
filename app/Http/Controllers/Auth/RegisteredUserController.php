@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Countries;
+use App\Models\Regime;
+use App\Models\RegimeUser;
+
 use Carbon\Carbon;
 
 use App\Providers\RouteServiceProvider;
@@ -13,19 +16,16 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\View;
-use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Facades\Config;
-use Illuminate\View\View as BladeView;
-
-use App\Services\BrevoMailer;
+use Illuminate\Validation\Rules;
+use Illuminate\View\View;
+use App\Rules\InternationalPhoneNumber;
 
 class RegisteredUserController extends Controller
 {
     /**
      * Display the registration view.
      */
-    public function create(): BladeView
+    public function create(): View
     {
         return view('auth.register');
     }
@@ -40,15 +40,23 @@ class RegisteredUserController extends Controller
         $request->validate([
             'fname' => ['required', 'string', 'max:255'],
             'lname' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'where' => ['required', 'string', 'max:255'],
+
         ]);
+        $marketing = false;
 
-        $marketing = $request->has('marketing');
+        if($request->has('marketing')){
+            $marketing = true;
+        }
 
-        // Extract the phone prefix
+        // After validation, fetch country by phone number
         $phoneNumber = $request->input('country');
-        $phonePrefix = '+' . substr($phoneNumber, 1, 2); // Assumes prefix is 2 digits
+
+      // Extract the phone prefix
+        $phonePrefix = '+' . substr($phoneNumber, 1, 2); // This assumes the prefix is always 2 characters after the '+'
+
+        // Query the country based on the phone prefix
         $country = Countries::where('phone_code', $phonePrefix)->first();
 
         $user = User::create([
@@ -58,7 +66,7 @@ class RegisteredUserController extends Controller
             'number' => $phoneNumber,
             'email' => $request->email,
             'where' => $request->where,
-            'country' => $country->name ?? null,
+            'country'=> $country->name,
             'marketing' => $marketing,
             'last_login_at' => Carbon::now(),
             'password' => Hash::make('password'),
@@ -66,20 +74,8 @@ class RegisteredUserController extends Controller
 
         $user->assignRole('client');
 
-        // ✅ Generate email verification link
-        $verificationUrl = URL::temporarySignedRoute(
-            'verification.verify',
-            now()->addMinutes(Config::get('auth.verification.expire', 60)),
-            ['id' => $user->id, 'hash' => sha1($user->email)]
-        );
-
-        // ✅ Render email content from Blade
-        $html = View::make('vendor.notifications.email', [
-            'actionUrl' => $verificationUrl,
-        ])->render();
-
-        BrevoMailer::sendVerification($user->email, $user->fname, 'Verify Your Email', $html);
-
+        // Use the insert method to insert multiple records in one query
+        event(new Registered($user));
 
         Auth::login($user);
 
