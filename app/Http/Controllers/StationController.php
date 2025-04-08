@@ -146,7 +146,7 @@ class StationController extends Controller
                 ->exists();
             $station->status = $userHasStation;
         }
-        // dd($stationDone);
+         //dd($stationDone);
 
         if ($stationDone < 2) {
             return view('dashboard', compact('stations', 'stationDone'));

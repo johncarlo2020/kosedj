@@ -26,10 +26,10 @@
 
                         <div class="text-content">
                             <p class="px-5 station-name-modal">
-                                UNLEASH YOUR INNER LIGHTS THIS RAMADAN
+                                YOUR JOURNEY<br>EXPERIENCE
                             </p>
                             <p class="px-5 message">Kindly complete
-                                Station 1 - Station 2 to proceed to the Gift Redemption Station</p>
+                                Station 1 to proceed to the Gift Redemption Station</p>
                         </div>
                         <div class="">
                             <button type="button" onclick="test()" class="button" data-bs-dismiss="modal">Close</button>
@@ -55,7 +55,7 @@
                                 <p>CHECK-IN SUCCESSFUL</p>
                             </div>
                         </div> --}}
-                        <div class="text-container-dashboard">
+                        <div id="station-{{ $station->id }}" class="text-container-dashboard {{ $station->status == true ? 'active' : '' }}">
                             <p class="number">#{{ $station->id }}.</p>
                             <p class="station-name-dashboard">
                                 {{ $station->name }}
@@ -69,6 +69,45 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <script>
+
+            document.addEventListener('DOMContentLoaded', function () {
+                const station1 = document.getElementById('station-1');
+                const station2Link = document.getElementById('station-link-2');
+
+                // Function to check if both station 1 and 2 are active
+                function checkStationsActive() {
+
+                    const isStation1Active = station1.classList.contains('active');
+console.log(isStation1Active);
+
+                    if (isStation1Active) {
+                        // Enable the link for station 3
+                        station2Link.style.pointerEvents = 'auto';
+                        station2Link.style.cursor = 'pointer';
+                        station2Link.href = '{{ route('station.show', ['station' => 2]) }}';
+                    } else {
+                        // Disable the link for station 2
+                        console.log('asdadas');
+
+                        station2Link.href = '#'; // Prevent navigation
+                        station2Link.addEventListener('click', openModal);
+                    }
+                }
+
+                function openModal(event) {
+                    $('#scanCompleteModal').modal('show');
+                }
+
+                // Check on initial load
+                checkStationsActive();
+
+
+
+                // Optionally: Add event listeners if the status of stations can change dynamically
+                // (For example, if they can be updated via AJAX, or the status changes after some user action)
+                station1.addEventListener('classChange', checkStationsActive);
+            });
+
         function sendMessage(language) {
             // Fetch the CSRF token from the meta tag
             var csrfToken = $('meta[name="csrf-token"]').attr('content');
@@ -92,5 +131,6 @@
                 }
             });
         }
+
     </script>
 </x-app-layout>

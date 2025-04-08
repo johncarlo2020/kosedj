@@ -195,7 +195,7 @@
                         </div>
                         <div class="text-content">
                             <img class="check" id="badge" src="">
-                            <p class="station-text"><span class="station_id"></span></p>
+                            <p class="station-text">Station <span class="station_id"></span></p>
                             <p class="message">
                                 Check-in Successful
                             </p>
@@ -374,9 +374,12 @@
             // Get the last character of the QR code message
             const lastCharacter = trimmedMessage.charAt(trimmedMessage.length - 1);
 
-
+            if(lastCharacter == '2') {
                 $('#routeBtn').attr('href', '{{ route('congrats') }}');
-
+            }
+            else {
+                $('#routeBtn').attr('href', '{{ route('dashboard') }}');
+            }
 
             $('.station_id').html(lastCharacter);
 
