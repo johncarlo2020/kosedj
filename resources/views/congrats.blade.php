@@ -9,29 +9,26 @@
         }
 
         body,
-        html {
-            height: 100%;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            /* Set the font to Nunito */
-            font-size: 16px;
-            /* Set the font size to 16px */
-        }
+html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+}
 
-        .container-fluid {
-            flex: 1;
-        }
+.container-fluid {
+    flex: 1;
+}
 
-        footer {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            font-size: 12px;
-            text-align: center;
-            padding: 10px 0;
-            color: #fff;
-        }
+      footer {
+    width: 100%;
+    font-size: 12px;
+    text-align: center;
+    padding: 10px 0;
+    color: #fff;
+    background-color: #000; /* Optional: Set a background color for better visibility */
+}
 
         footer img {
             width: 35%;
@@ -63,11 +60,16 @@
                 @include('components.branding')
             </div>
             <a href="https://www.kose.com.my">Click Here for more Information</a>
+
+            <br>
+            <br>
+
+            <a class="mt-5" href="https://wowsome.com.my/">Powered by WOWSOME®2024</a>
+
         </div>
 
-        <div class="footer">
-            <a class="mt-5" href="https://wowsome.com.my/">Powered by WOWSOME®2024</a>
-        </div>
+        {{-- <div class="footer">
+        </div> --}}
     </div>
 
     <script>
