@@ -131,9 +131,14 @@
                     </div>
                     <div class="row mb-0 mt-5">
                         <div class="col-12">
-                            <button id="submitButton" type="submit" class="main-btn btn btn-primary">
+                            {{-- <button id="submitButton" type="submit" class="main-btn btn btn-primary">
                                 {{ __('SUBMIT') }}
+                            </button> --}}
+
+                            <button class="btn btn-transparent submit-btn">
+                                <img class="logo" src="{{ asset('images/submit-img.svg') }}" alt="">
                             </button>
+
                             <div class="bottom-text">
                                 <p class="already-register">
                                     Already Registered

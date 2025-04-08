@@ -3,9 +3,7 @@
 
 @font-face {
     font-family: 'Linux Biolinum';
-    src: url('../fonts/LinuxBiolinum.woff2') format('woff2'),
-         url('../fonts/LinuxBiolinum.woff') format('woff'),
-         url('../fonts/LinuxBiolinum.ttf') format('truetype');
+    src:url('../fonts/pala.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
 }
@@ -85,7 +83,7 @@ body {
 
     overflow-y: auto;
     /* Allows vertical scrolling */
-    background-image: url("../images/main-bg.png");
+    background-image: url("../images/main-visual.webp");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom;
@@ -100,7 +98,7 @@ body {
         width: 100%;
 
         .branding .logo {
-            width: 100%;
+            width: 50%;
             height: auto;
             margin-bottom: 20px;
         }
@@ -303,7 +301,7 @@ div {
 }
 
 .label-form {
-    color: white;
+    color: $secondary;
 }
 
 
@@ -509,7 +507,7 @@ a:active {
     align-items: center;
 
     .logo {
-        width: 50%;
+        width: 40%;
         height: auto;
     }
 }
@@ -837,8 +835,7 @@ a:active {
 
         .login-text {
             font-size: 24px;
-            font-weight: 800;
-            color: $primary;
+            color: $secondary;
         }
     }
 }
@@ -1302,8 +1299,8 @@ $form-check-hover-shadow: rgba(0, 123, 255, 0.5);
         position: relative;
         padding-left: 30px; // Adjust padding to align with the checkbox
         cursor: pointer;
-        font-size: 17px;
-        color: #fff;
+        color: $secondary !important;
+        font-size: 14px;
 
         &::before {
             content: "";
@@ -1825,7 +1822,7 @@ footer {
 }
 footer {
     padding: 20px;
-    margin-top: auto;
+    margin-top:20px;
     text-align: center;
     .logout-text {
         color: #A8DDFF;
@@ -1874,5 +1871,47 @@ footer {
             letter-spacing: 1px;
             text-decoration: none !important;
         }
+    }
+}
+
+h1,h2,h3,h4,h5,h6,p,a{
+   color: #051EAC !important;
+}
+
+.welcome-text {
+    width: 100%;
+
+    img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+}
+
+.new-sign-in {
+    width: 54vw;
+    margin-top: 30px;
+    border: 0px solid #AABDCA;
+    outline: none;
+    img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+}
+
+.already-register p a {
+    color: #051EAC !important;
+}
+
+.submit-btn {
+    width: 100%;
+    border: 0px solid #AABDCA;
+    outline: none;
+    padding: 0;
+    img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
     }
 }

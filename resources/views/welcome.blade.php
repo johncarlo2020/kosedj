@@ -47,40 +47,41 @@
     </style>
 
     <body class="antialiased home">
-        <div class="py-5 container-fluid">
+        <div class="pt-5 container-fluid">
             <div class="row">
                 <div
-                    class="col-12 d-flex justify-content-center align-items-center"
+                    class="col-12 p-0 d-flex justify-content-center align-items-center"
                 >
                     @include('components.branding')
                 </div>
-                <div class="mt-3 text-center col-12 text-content welcome">
-                    <h1 class="mt-5 heading">A new Form of</h1>
-                    <h1 class="mt-2 heading">
-                        Brightening Begins
-                    </h1>
+                <div class="welcome-text">
+                    <img class="logo" src="{{ asset('images/welcometext.png') }}" alt="">
+                </div>
+                <div class="text-center col-12 text-content welcome p-0">
                     <div class="mt-3 branding">
                         <img
                             class="structure"
-                            src="{{ asset('images/structure.png') }}"
+                            src="{{ asset('images/reg bg-visual.webp') }}"
                             alt=""
                         />
                     </div>
-                    <a
+                    {{-- <a
                         href="{{ route('register') }}"
                         class="mt-5 mb-5 discover-btn btn rounded-pill"
                         >Sign Up</a
-                    >
-                    <p class="already-register">Already Registered</p>
-                    <p class="already-register">
+                    > --}}
+
+                    <a class="btn bg-transparent new-sign-in" href="{{ route('register') }}">
+                        <img class="logo" src="{{ asset('images/signup-button.webp') }}" alt="">
+                    </a>
+                    <p class="already-register mt-5">Already Registered</p>
+                    <p class="already-register mb-4">
                         Please Login
                         <a href="{{ route('login') }}" class="">here</a>
                     </p>
+                    <a class="mt-5" href="https://wowsome.com.my/">Powered by WOWSOME®2024</a>
                 </div>
             </div>
         </div>
-        <footer>
-            <a href="https://wowsome.com.my/">Powered by WOWSOME®2024</a>
-        </footer>
     </body>
 </html>
