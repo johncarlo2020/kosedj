@@ -21,8 +21,8 @@
             justify-content: center;
             width: 100vw;
             height: 100vh;
-            background-color: #202020;
             overflow: hidden;
+            padding-bottom: env(safe-area-inset-bottom);
         }
 
         .roulette-container {
@@ -31,7 +31,7 @@
 
         .roulette-container::before {
             content: "";
-            background-image: url('{{ asset('images/rouletArrow.png') }}');
+            background-image: url('{{ asset(' images/rouletArrow.png') }}');
             width: 5vw;
             height: 100px;
             background-size: contain;
@@ -89,9 +89,9 @@
             background-size: contain;
             margin-bottom: 20px;
             content: '';
-            left: -20px;
-            width: 10vw;
-            height: 40vw;
+            left: -14px;
+            width: 6vw;
+            height: 36vw;
         }
 
         .centered-image {
@@ -101,6 +101,7 @@
             top: 0;
             left: -20px;
         }
+
         .wrapper {
             display: flex;
             justify-content: center;
@@ -114,38 +115,65 @@
             position: relative;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .dot {
-        position: absolute;
-        width: 12px;
-        height: 12px;
-        background-color: #fff;
-        border-radius: 50%;
-    }
 
-    .dot:nth-child(1) { transform: rotate(0deg) translate(143px); }
-    .dot:nth-child(2) { transform: rotate(45deg) translate(143px); }
-    .dot:nth-child(3) { transform: rotate(90deg) translate(143px); }
-    .dot:nth-child(4) { transform: rotate(135deg) translate(143px); }
-    .dot:nth-child(5) { transform: rotate(180deg) translate(143px); }
-    .dot:nth-child(6) { transform: rotate(225deg) translate(143px); }
-    .dot:nth-child(7) { transform: rotate(270deg) translate(143px); }
-    .dot:nth-child(8) { transform: rotate(315deg) translate(143px); }
+        .dot {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background-color: #fff;
+            border-radius: 50%;
+        }
+
+        .dot:nth-child(1) {
+            transform: rotate(0deg) translate(143px);
+        }
+
+        .dot:nth-child(2) {
+            transform: rotate(45deg) translate(143px);
+        }
+
+        .dot:nth-child(3) {
+            transform: rotate(90deg) translate(143px);
+        }
+
+        .dot:nth-child(4) {
+            transform: rotate(135deg) translate(143px);
+        }
+
+        .dot:nth-child(5) {
+            transform: rotate(180deg) translate(143px);
+        }
+
+        .dot:nth-child(6) {
+            transform: rotate(225deg) translate(143px);
+        }
+
+        .dot:nth-child(7) {
+            transform: rotate(270deg) translate(143px);
+        }
+
+        .dot:nth-child(8) {
+            transform: rotate(315deg) translate(143px);
+        }
 
         .roulette {
             margin: 0 auto;
             border: 4px solid #FFF8AD;
         }
+
         .option-image-container {
             width: 20%;
             height: auto;
             margin: 0 auto;
             display: block;
         }
+
         .option-image-container .option-image {
             width: 100%;
             height: auto;
             object-fit: contain;
         }
+
         .modal-background {
             background-color: transparent;
         }
@@ -159,16 +187,14 @@
                             <i class="fa-regular check"></i>
                         </div>
                         <div class="text-content">
-                            <img class="icon-badge" id="badge" src="">
                             <img class="check" id="badge" src="">
-
                             <p class="station-text">Station <span class="station_id"></span></p>
                             <p class="message">
                                 Check-in Successful
                             </p>
                         </div>
                         <div class="">
-                            <a href="{{ route('dashboard') }}" class="button">
+                            <a href="{{ route('dashboard') }}" id="routeBtn" class="button">
                                 Close
                             </a>
                         </div>
@@ -182,36 +208,27 @@
             @include('components.branding')
         </div>
         <div id="mainContent" class="mt-3 text-center col-12 text-content">
-            <div id="{{ $user ? '' : 'forceQr' }}" class="mt-4 icon-container">
-                <img class="icon-bg iconNew" src="{{ asset('images/Icon4.png') }}" alt="Lock Image">
-            </div>
             <h1 class="mt-4 station-heading">
-                @if ($station->id == 6)
-                Gift House
-                @else
                 Station {{ $station->id }}
-                @endif
             </h1>
             <h2 class="station-subheading">{{ $station->name }}</h2>
+            @if ($station->id != 4)
             <img class="mt-5 station-image" src="{{ asset('images/step/step-img-' . $station->id . '.png') }}"
                 alt="Station Image">
-            @if ($user != true)
+            @else
+            <img class="mt-5 station-image" src="{{ asset('images/step/spin.png') }}" alt="Station Image">
+            @endif
 
+            @if ($user != true)
             <button id="start-scanner" class="mx-auto mt-4 camera-btn"><img src="{{ asset('images/camera.svg') }}"
                     alt=""></button>
             <p class="px-4 mt-3 bottom-text">Scan the QR code at the station to proceed</p>
-
             @else
             <p class="px-4 mt-3 bottom-text">Already Completed</p>
             @endif
-            <div class="wrapper">
-                @for ($i = 0; $i < 8; $i++)
-                    <div class="dot"></div>
-                @endfor
-                <div class="roulette-container">
-                    <div class="roulette"></div>
-                </div>
-            </div>
+
+
+
         </div>
         <div id="scannerContainer" class="scanner-container d-none">
             <!-- <button id="close" class="mx-auto mt-4 camera-btn">x</button> -->
@@ -231,16 +248,18 @@
             height: 538px;
             margin: 0 auto;
         }
+
         .button-container {
             position: absolute;
             bottom: 45px;
             left: 50%;
             transform: translateX(-50%);
         }
+
         .button-container button {
-           width: 200px ;
-           height: 40px;
-           border-radius: 40px;
+            width: 200px;
+            height: 40px;
+            border-radius: 40px;
         }
 
         .button-container button.btn-secondary {
@@ -259,18 +278,6 @@
         }
     </style>
 
-    <div class="modal fade" id="customModal" tabindex="-1" role="dialog" aria-labelledby="customModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content modal-background">
-                <div class="button-container">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Yes</button>
-                    <button type="button" class="btn btn-primary">No</button>
-                </div>
-                <img src="{{ asset('images/modal.png') }}" alt="">
-            </div>
-        </div>
-    </div>
-
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -278,18 +285,14 @@
     <!-- Ensure Bootstrap JS is included -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 
-    <script>
-        $(document).ready(function() {
-            $('#customModal').modal('show');
-        });
-    </script>
+
     <script>
         const mainContent = document.getElementById('mainContent');
         const scannerContainer = document.getElementById('scannerContainer');
         var message = '';
         var count = 0;
         var lastClick = 0;
-        document.getElementById('start-scanner').addEventListener('click', function(event) {
+        document.getElementById('start-scanner').addEventListener('click', function (event) {
             event.preventDefault();
 
             mainContent.classList.add('d-none');
@@ -300,20 +303,20 @@
             const html5QrCode = new Html5Qrcode("reader");
 
             html5QrCode.start({
-                        facingMode: "environment"
-                    }, {
-                        fps: 10,
-                        qrbox: 150,
-                        aspectRatio: 9 / 16 // Set the aspect ratio to 16:9
-                    },
-                    qrCodeMessage => {
-                        sendMessage(`${qrCodeMessage}`);
-                        html5QrCode.stop();
+                facingMode: "environment"
+            }, {
+                fps: 10,
+                qrbox: 150,
+                aspectRatio: 9 / 16 // Set the aspect ratio to 16:9
+            },
+                qrCodeMessage => {
+                    sendMessage(`${qrCodeMessage}`);
+                    html5QrCode.stop();
 
-                    },
-                    errorMessage => {
-                        console.log(`QR Code no longer in front of camera.`);
-                    })
+                },
+                errorMessage => {
+                    console.log(`QR Code no longer in front of camera.`);
+                })
                 .catch(err => {
                     console.log(`Unable to start scanning, error: ${err}`);
                 });
@@ -333,126 +336,61 @@
                 },
                 data: {
                     qrCodeMessage: message,
-                    station: {{ $station->id }}
+                    station: {{ $station-> id }}
                 },
-                success: function(response) {
-                    // Create a new canvas element for confetti
-                    const confettiCanvas = document.createElement('canvas');
-                    confettiCanvas.style.position = 'fixed';
-                    confettiCanvas.style.top = 0;
-                    confettiCanvas.style.left = 0;
-                    confettiCanvas.style.width = '100%';
-                    confettiCanvas.style.height = '100%';
-                    confettiCanvas.style.pointerEvents = 'none';
-                    confettiCanvas.style.zIndex = 9999;
-                    document.body.appendChild(confettiCanvas);
+        success: function(response) {
+            // Create a new canvas element for confetti
+            const confettiCanvas = document.createElement('canvas');
+            confettiCanvas.style.position = 'fixed';
+            confettiCanvas.style.top = 0;
+            confettiCanvas.style.left = 0;
+            confettiCanvas.style.width = '100%';
+            confettiCanvas.style.height = '100%';
+            confettiCanvas.style.pointerEvents = 'none';
+            confettiCanvas.style.zIndex = 9999;
+            document.body.appendChild(confettiCanvas);
 
-                    // Trigger confetti using the new canvas
-                    const myConfetti = confetti.create(confettiCanvas, {
-                        resize: true,
-                        useWorker: true
-                    });
+            // Trigger confetti using the new canvas
+            const myConfetti = confetti.create(confettiCanvas, {
+                resize: true,
+                useWorker: true
+            });
 
-                    myConfetti({
-                        particleCount: 100,
-                        spread: 70,
-                        origin: {
-                            y: 0.6
-                        }
-                    });
-
-                    // Optional: Remove the canvas after a short delay
-                    setTimeout(() => {
-                        document.body.removeChild(confettiCanvas);
-                    }, 5000);
-                    console.log('QR Code message sent successfully:', response);
-                    // Handle success response if needed
-                    const trimmedMessage = message.trim();
-                    // Get the last character of the QR code message
-                    const lastCharacter = trimmedMessage.charAt(trimmedMessage.length - 1);
-
-                    $('.station_id').html(lastCharacter);
-                    const dynamicImage = `{{ asset('images/badge') }}${lastCharacter}.png`;
-                    $('#badge').attr('src', dynamicImage);
-
-                    $(scanCompleteModal).modal('show');
-
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error sending QR Code message:', error);
-                    $('.station-text').html('Failed');
-                    $('.message').html('Invalid QR code. Please try again.');
-                    $('.check').attr('src', '{{ asset('images/error.svg') }}');
-                    $(scanCompleteModal).modal('show');
+            myConfetti({
+                particleCount: 100,
+                spread: 70,
+                origin: {
+                    y: 0.6
                 }
             });
+
+            // Optional: Remove the canvas after a short delay
+            setTimeout(() => {
+                document.body.removeChild(confettiCanvas);
+            }, 5000);
+            console.log('QR Code message sent successfully:', response);
+            // Handle success response if needed
+            const trimmedMessage = message.trim();
+            // Get the last character of the QR code message
+            const lastCharacter = trimmedMessage.charAt(trimmedMessage.length - 1);
+
+
+                $('#routeBtn').attr('href', '{{ route('congrats') }}');
+
+
+            $('.station_id').html(lastCharacter);
+
+            $(scanCompleteModal).modal('show');
+
+        },
+        error: function(xhr, status, error) {
+            console.error('Error sending QR Code message:', error);
+            $('.station-text').html('Failed');
+            $('.message').html('Invalid QR code. Please try again.');
+            $('.check').attr('src', '{{ asset('images / error.svg') }}');
+            $(scanCompleteModal).modal('show');
         }
-
-    $(document).ready(function(){
-        var rouletteSize = 267;
-        var numberOfSlots = 8;
-        var slotAngle = 360 / numberOfSlots;
-        var degrees = (180 - slotAngle) / 2;
-        var slotHeight = Math.tan(degrees * Math.PI / 180) * (rouletteSize / 2);
-
-        var colors = ['#A6D7C0', '#FFF8AD']; // Define the two colors
-        var images = [];
-
-        for (var i = 1; i <= numberOfSlots; i++) {
-            images.push('{{ asset("images") }}/badge' + i + '.png');
-        }
-
-        $(".roulette").css({
-            'width' : rouletteSize + 'px',
-            'height' : rouletteSize + 'px'
-        });
-
-        $('head').append('<style id="afterNumber"></style>');
-
-        for(var i=1; i<=numberOfSlots; i++){
-
-            $(".roulette").append('<div class="option option-'+ i +'"></div>');
-            var classSelector = '.option-' + i;
-
-            $(classSelector).css({
-                'transform' : 'rotate(' + slotAngle * i + 'deg)',
-                'border-bottom-color' : colors[i % 2] // Alternate between the two colors
             });
-
-            var dynamicSize = window.innerWidth * 0.1; // 10% of the screen width
-                $('#afterNumber').append('.option-' + i + '::before {content: ""; z-index: 9999 !important; background-image: url("' + images[i-1] + '");}');
-
-            $(".option")
-                .attr('data-content', i)
-                .attr('data-width', (rouletteSize / 2) + 'px')
-                .attr('data-line', (rouletteSize / 2) + 'px');
         }
-
-        $(".option").css({
-            'border-bottom-width' : slotHeight + 'px',
-            'border-right-width' : (rouletteSize / 2) + 'px',
-            'border-left-width' : (rouletteSize / 2) + 'px'
-        });
-
-        $('.roulette').before().click(function(){
-            var num;
-            var numID = 'number-';
-            num = 1 + Math.round(Math.random() * (numberOfSlots - 1));
-            numID += num;
-
-            $('#rouletteAnimation').remove();
-            $('head').append('<style id="rouletteAnimation">'+
-                '#number-'+ num +' { animation-name: number-'+ num +'; } '+
-            '@keyframes number-'+ num +' {'+
-                'from { transform: rotate(0); } '+
-                'to { transform: rotate('+ (360 * (numberOfSlots - 1) - slotAngle * num) +'deg); }'+
-            '}'+
-            '</style>'
-            );
-
-            $('.roulette').removeAttr('id').attr('id', numID);
-        });
-
-    });
     </script>
 </x-app-layout>

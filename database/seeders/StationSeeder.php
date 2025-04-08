@@ -23,19 +23,12 @@ class StationSeeder extends Seeder
     public function run()
     {
         Station::create([
-            'name' => 'Photo Op',
+            'name' => 'Hydration and UV Game',
         ]);
 
-        Station::create([
-            'name' => 'Sampling & Sales Zone',
-        ]);
 
         Station::create([
-            'name' => 'Redemption',
-        ]);
-
-        Station::create([
-            'name' => 'Gift with Purchase',
+            'name' => 'Gift Redemption',
         ]);
 
         Survey::insert([['name' => 'Blood Deficient'], ['name' => 'Blood Stagnant'], ['name' => 'Qi Deficient'], ['name' => 'Qi Stagnant'], ['name' => 'Water Stagnant']]);

@@ -115,13 +115,29 @@ class StationController extends Controller
         return view('survey', compact('optionsList'));
     }
 
-    public function welcome()
+     public function welcome()
     {
-        $userId = Auth::id();
+        $user = User::with('stationUser')->where('id', auth()->id())->first();
+        // dd($user->stationUser->count());
 
-        $user = Answers::where('user_id', auth()->id())->exists();
+        $stationDone = $user->stationUser->count();
+        $stations = Station::get();
 
-        return view('dashboard', compact('user'));
+        // Loop through each station and append a flag indicating if the user has it
+        foreach ($stations as $station) {
+            $userHasStation = $user
+                ->StationUser()
+                ->where('station_id', $station->id)
+                ->exists();
+            $station->status = $userHasStation;
+        }
+        // dd($stationDone);
+
+        if ($stationDone < 2) {
+            return view('dashboard', compact('stations', 'stationDone'));
+        } else {
+            return redirect()->route('congrats');
+        }
     }
 
     public function scan(Request $request)
