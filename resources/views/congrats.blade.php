@@ -50,7 +50,7 @@ html {
                 <span>You have completed</span><br>
                 </p>
 
-                <p class="yellow-text2">Collect Your Gift<br><span class="ml-4">at Counter</span></p>
+                <p class="yellow-text2">Collect Your Gift<br><span>at Counter</span></p>
                 <img class="gift" src="{{ asset('images/step/step-img-2.webp') }}" alt=""  alt="">
         </div>
 
