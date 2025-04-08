@@ -573,7 +573,7 @@ a:active {
         .login-heading {
             font-size: 24px;
             font-weight: 400;
-            color: $primary;
+            color: $secondary !important;
             margin-bottom: 20px;
         }
 
@@ -649,21 +649,53 @@ a:active {
 .dashboard {
     overflow-y: auto;
     width: 100%;
-    height: 110vh;
+    height: 100vh;
     padding: 40px 20px;
+    position: relative;
+    background: url("../images/map bg-visual.webp") !important;
+    background-repeat: no-repeat;
+    background-size: cover !important;
+    background-position: bottom;
 
     .content {
         padding: 20px;
         margin-top: 20px;
     }
 
+    .bootom-content {
+        width: 100%;
+        height: 40vh;
+        position: absolute;
+        background: url("../images/reg bg-visual.webp");
+        background-repeat: no-repeat;
+        background-size: cover !important;
+        background-position: bottom;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+        text-align: center;
+
+        .footer-link {
+          margin-top: 30vh;
+        }
+    }
+
     .tile {
-        display: flex;
-        align-items: center;
         gap: 12px;
         width: 100%;
-        height: 100px;
-        margin-bottom: 10px;
+        height: 24vw;
+        margin-bottom: 20px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        padding-left: 30px;
+        border-radius: 16px;
+        background: white;
+        backdrop-filter: blur(10px); /* glassy blur */
+        -webkit-backdrop-filter: blur(10px); /* Safari support */
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* soft shadow */
 
         @media (max-width: 375px) {
             height: 70px;
@@ -686,6 +718,12 @@ a:active {
         p {
             margin-bottom: 0;
             text-align: left;
+            color: $primary !important;
+        }
+
+        .number {
+            font-size: 18px !important;
+            font-weight: 600;
         }
 
         .station {
@@ -723,7 +761,7 @@ a:active {
 
 .station-page {
     width: 100%;
-    height: 130vh;
+    height: 100vh;
     padding-top: 40px;
     overflow-y: auto;
     padding-bottom: 50px;
@@ -1368,8 +1406,9 @@ $form-check-hover-shadow: rgba(0, 123, 255, 0.5);
     height: 40px;
     padding: 5px 30px;
     border-radius: 40px;
-    border: solid 2px $primary;
-    background-color: #fff;
+    background-color: #456EBF;
+    outline: none;
+    border: none;
 
     &:hover {
         background-color: #fff;
@@ -1875,7 +1914,8 @@ footer {
 }
 
 h1,h2,h3,h4,h5,h6,p,a{
-   color: #051EAC !important;
+   color: $secondary !important;
+   font-family: "Linux Biolinum", sans-serif !important;
 }
 
 .welcome-text {
@@ -1914,4 +1954,87 @@ h1,h2,h3,h4,h5,h6,p,a{
         height: auto;
         object-fit: contain;
     }
+}
+.footer {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90vw;
+    text-align: center;
+}
+
+.station-born  {
+    color: $secondary  !important;
+    font-size: 24px;
+    margin-top: 5vh;
+    text-align: center;
+}
+
+.bottom-text {
+    font-size: 20px !important;
+}
+
+.yellow-text {
+    position: relative;
+    z-index: 10;
+    font-family: "Aneek", sans-serif;
+    font-size: 7vw;
+
+    background: radial-gradient(
+        circle,
+        #456EBF 0%,
+        #A1CEFB 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+    text-align: left;
+    font-style: italic;
+    transform: rotate(-6deg);
+    font-weight: 500;
+    padding-left: 10px;
+    margin: 0 auto;
+    width: fit-content;
+    margin-top: 10vh;
+    span {
+        font-weight: 900;
+        font-size: 7.4vw;
+    }
+    width: 71vw;
+}
+
+.yellow-text2 {
+    position: relative;
+    z-index: 10;
+    font-family: "Aneek", sans-serif;
+    font-size: 5vw;
+    text-align: center;
+    margin: 0 auto;
+    background: radial-gradient(
+        circle,
+        #040E64 0%,
+        #A1CEFB 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+    text-align: left;
+    font-style: italic;
+    transform: rotate(-6deg);
+    font-weight: 500;
+    padding-left: 10px;
+    margin-top: 5vh;
+    width: 40vw;
+}
+
+.gift {
+    width: 60vw;
+    height: auto;
+    object-fit: contain;
+    margin: 0 auto;
+    margin-top: 3vh;
+
 }

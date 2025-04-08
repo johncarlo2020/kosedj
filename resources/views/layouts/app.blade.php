@@ -48,7 +48,7 @@
     <body>
         <style>
             .main-bg {
-                background-image: url("{{ asset("/images/main-bg.png") }}");
+                background-image: url("{{ asset("/images/main-visual.webp") }}");
             }
         </style>
         <main>

@@ -33,21 +33,24 @@
 
                     <x-input-error :messages="$errors->get('password')" class="mt-2" />
 
-                    <div class="flex items-center justify-end mt-4">
-                        <x-primary-button class="main-btn btn btn-primary">
-                            {{ __('LOGIN') }}
-                        </x-primary-button>
+                    <div class="flex items-center justify-end">
+                        <button class="btn btn-transparent submit-btn" type="submit">
+                            <img class="logo" src="{{ asset('images/login.png') }}" alt="">
+                        </button>
                     </div>
                 </form>
                 <div class="bottom-text">
                     <p>
-                        Don’t have account yet!
+                        Haven't register yet?
                         <a class="" href="{{ route('register') }}">
                             {{ __('REGISTER') }}
                         </a>
                     </p>
                 </div>
             </div>
+        </div>
+        <div class="footer">
+            <a class="mt-5" href="https://wowsome.com.my/">Powered by WOWSOME®2024</a>
         </div>
     </div>
 </x-guest-layout>

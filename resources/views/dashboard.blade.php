@@ -39,6 +39,33 @@
             </div>
         </div>
     </div>
+    <div class="dashboard main main-bg">
+            <div class="branding-container">@include('components.branding')</div>
+            <h1 class="station-born ">YOUR JOURNEY<br>EXPERIENCE</h1>
+
+            <div class="content">
+                @foreach ($stations as $station)
+                <a id="station-link-{{ $station->id }}" class="title-container"
+                    href="{{ route('station.show', ['station' => $station->id]) }}">
+                    <div class="tile">
+                        {{-- <div id="station-{{ $station->id }}"
+                            class="img-container {{ $station->status == true ? 'active' : '' }}">
+                            <img src="{{ asset('images/new' . $station->id . '.webp') }}" alt="" />
+                            <div class="marker">
+                                <p>CHECK-IN SUCCESSFUL</p>
+                            </div>
+                        </div> --}}
+                        <div class="text-container-dashboard">
+                            <p class="number">#{{ $station->id }}.</p>
+                            <p class="station-name-dashboard">
+                                {{ $station->name }}
+                            </p>
+                        </div>
+                    </div>
+                </a>
+                @endforeach
+            </div>
+        </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <script>

@@ -177,25 +177,32 @@
         .modal-background {
             background-color: transparent;
         }
+        .image-check img {
+            width: 100px;
+            height: auto;
+            object-fit: contain;
+            margin-bottom: 20px;
+        }
     </style>
     <div class="modal fade " id="scanCompleteModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body">
                     <div class="text-center content">
-                        <div class="image-check">
-                            <i class="fa-regular check"></i>
+                        <div class="image-check d-flex justify-content-center align-items-center">
+                            <img class="mt-5 station-image" src="{{ asset('images/step/step-img-' . $station->id . '.webp') }}"
+                            alt="Station Image">
                         </div>
                         <div class="text-content">
                             <img class="check" id="badge" src="">
-                            <p class="station-text">Station <span class="station_id"></span></p>
+                            <p class="station-text"><span class="station_id"></span></p>
                             <p class="message">
                                 Check-in Successful
                             </p>
                         </div>
                         <div class="">
-                            <a href="{{ route('dashboard') }}" id="routeBtn" class="button">
-                                Close
+                            <a href="{{ route('dashboard') }}" id="routeBtn" class="btn-transparent congrats-btn">
+                                <img class="logo" src="{{ asset('images/okay.svg') }}" alt="">
                             </a>
                         </div>
                     </div>
@@ -209,32 +216,25 @@
         </div>
         <div id="mainContent" class="mt-3 text-center col-12 text-content">
             <h1 class="mt-4 station-heading">
-                Station {{ $station->id }}
+                #{{ $station->id }}
             </h1>
             <h2 class="station-subheading">{{ $station->name }}</h2>
-            @if ($station->id != 4)
-            <img class="mt-5 station-image" src="{{ asset('images/step/step-img-' . $station->id . '.png') }}"
+            <img class="mt-5 station-image" src="{{ asset('images/step/step-img-' . $station->id . '.webp') }}"
                 alt="Station Image">
-            @else
-            <img class="mt-5 station-image" src="{{ asset('images/step/spin.png') }}" alt="Station Image">
-            @endif
-
             @if ($user != true)
             <button id="start-scanner" class="mx-auto mt-4 camera-btn"><img src="{{ asset('images/camera.svg') }}"
                     alt=""></button>
-            <p class="px-4 mt-3 bottom-text">Scan the QR code at the station to proceed</p>
+            <p class="px-4 mt-3 bottom-text">Scan the QR code on the
+                screen panel to proceed</p>
             @else
             <p class="px-4 mt-3 bottom-text">Already Completed</p>
             @endif
-
-
-
         </div>
         <div id="scannerContainer" class="scanner-container d-none">
             <!-- <button id="close" class="mx-auto mt-4 camera-btn">x</button> -->
             <div id="reader"></div>
             <div class="p-3 mt-3">
-                <p class="px-4 text-center bottom-text">Find the QR code & Scan to check in the station</p>
+                <p class="px-4 text-center bottom-text">Find the QR code & Scan to check in</p>
             </div>
         </div>
     </div>
