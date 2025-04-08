@@ -50,6 +50,8 @@ Route::group(['middleware' => ['client', 'verified']], function () {
     Route::get('/survey', 'App\Http\Controllers\StationController@survey')->name('survey');
     Route::post('/answerSurvey', 'App\Http\Controllers\StationController@answerSurvey')->name('answerSurvey');
     Route::get('/congrats', 'App\Http\Controllers\StationController@congrats')->name('congrats');
+    Route::post('/lang', 'App\Http\Controllers\StationController@lang')->name('lang');
+
 });
 
 require __DIR__ . '/auth.php';

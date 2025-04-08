@@ -42,12 +42,12 @@
     </style>
 
     <body class="antialiased home">
-        <div class="container-fluid py-5">
+        <div class="py-5 container-fluid">
             <div class="content-wrapper">
                 <div class="branding-container">
                     @include('components.branding')
                 </div>
-                <div class="text-content text-center px-3">
+                <div class="px-3 text-center text-content">
                     <h1 class="heading">Welcome!</h1>
                     <p class="mb-5">
                         Join us today for an adventure packed with exciting and

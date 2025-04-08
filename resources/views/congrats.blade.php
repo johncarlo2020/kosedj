@@ -49,16 +49,28 @@
             @include('components.branding')
         </div>
         <h1 class="mt-5 well">
+            @if ($lang == 'cn')
+            做得好 {{ auth()->user()->fname }} ! <br />
+            根据您的体质需求选择一张建议卡，做您的美容茶吧
+            @else
             Well done {{ auth()->user()->fname }} ! <br />
             Pick a suggestion card based on your body condition and DIY your
             beauty tea.
+            @endif
+
         </h1>
         <div class="my-3 ranking-container">
             @foreach ($top as $index => $item)
                 <div class="ranking ranking__{{ $item['survey'] }} mb-2 {{ $index >= 3 ? 'd-none' : '' }}">
                     <img src="{{ asset('images/bubble' . $item['survey'] . '.png') }}" alt="" />
                     <div class="barholder">
-                        <p class="rank-name">{{ $item['survey_name'] }}</p>
+                        <p class="rank-name">
+                            @if ($lang == 'cn')
+                                {{ $item['survey_cn_name'] }}
+                            @else
+                            {{ $item['survey_name'] }}
+
+                            @endif
                         <div class="progress">
                             <div class="progress-bar" roley="progressbar"
                                 style="width: {{ $item['percentage_answered'] }}%;"
