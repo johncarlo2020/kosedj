@@ -68,12 +68,16 @@ class StationController extends Controller
     public function answerSurvey(Request $request)
     {
         $data = [];
-        $userId = auth()->id();
         $questions = $request->question;
-        foreach ($questions as $key => $id) {
+        $sessionId = session()->getId();
+
+        foreach ($questions as $id) {
             $data[] = [
-                'user_id' => $userId,
+                'user_id' => null, // Always null
+                'session_id' => $sessionId,
                 'question_id' => $id,
+                'created_at' => now(),
+                'updated_at' => now(),
             ];
         }
 
@@ -82,58 +86,62 @@ class StationController extends Controller
         return redirect()->route('congrats');
     }
 
+
+
     public function congrats()
-    {
-        $userId = auth()->id();
-        $lang= auth()->user()->lang;
+{
+    $user = auth()->user();
+    $userId = $user?->id;
+    $sessionId = session()->getId();
+    $lang = session('lang', $user?->lang ?? 'en');
 
-        $surveys = Survey::with('question')->get();
+    $surveys = Survey::with('question')->get();
+    $surveyData = [];
 
-        // Prepare data to store surveys with percentage
-        $surveyData = [];
+    foreach ($surveys as $survey) {
+        $totalQuestions = $survey->questions->count();
 
-        foreach ($surveys as $survey) {
-            // Get total number of questions for the survey
-            $totalQuestions = $survey->questions->count();
+        // Use user_id if logged in, else use session_id
+        $answeredQuestions = Answers::where(function ($query) use ($userId, $sessionId) {
+                if ($userId) {
+                    $query->where('user_id', $userId);
+                } else {
+                    $query->where('session_id', $sessionId);
+                }
+            })
+            ->whereIn('question_id', $survey->questions->pluck('id'))
+            ->count();
 
-            // Count the number of answered questions by the user
-            $answeredQuestions = Answers::where('user_id', $userId)->whereIn('question_id', $survey->questions->pluck('id'))->count();
+        $percentageAnswered = $totalQuestions > 0 ? ($answeredQuestions / $totalQuestions) * 100 : 0;
 
-            // Calculate percentage
-            $percentageAnswered = $totalQuestions > 0 ? ($answeredQuestions / $totalQuestions) * 100 : 0;
-
-            // Store survey and its percentage
-            $surveyData[] = [
-                'survey' => $survey->id,
-                'survey_name' => $survey->name,
-                'survey_cn_name' => $survey->cn_name,
-                'percentage_answered' => $percentageAnswered,
-                'count' => $answeredQuestions,
-                'total' => $totalQuestions,
-            ];
-        }
-
-        // Sort by highest percentage first, take the top 3, and reset the indexes
-        $top = collect($surveyData)
-            ->sortByDesc('percentage_answered') // Sort by highest percentage first
-            ->values() // Reset the array indexes to 0, 1, 2
-            ->toArray();
-
-        return view('congrats', compact('top','lang'));
+        $surveyData[] = [
+            'survey' => $survey->id,
+            'survey_name' => $survey->name,
+            'survey_cn_name' => $survey->cn_name,
+            'percentage_answered' => $percentageAnswered,
+            'count' => $answeredQuestions,
+            'total' => $totalQuestions,
+        ];
     }
+
+    $top = collect($surveyData)->sortByDesc('percentage_answered')->values()->toArray();
+
+    return view('congrats', compact('top', 'lang'));
+}
+
 
     public function survey(Request $request)
     {
-        $userId = auth()->id();
+        // Store language in session (overwrites if already set)
+        $lang = $request->lang ?? 'en'; // Default to 'en' if null
+        session()->put('lang', $lang);
 
-        $lang=$request->lang;
         // Fetch the survey options
-
         $optionsList = Survey::get();
-        // dd($optionsList);
 
-        return view('survey', compact('optionsList','lang'));
+        return view('survey', compact('optionsList', 'lang'));
     }
+
 
     public function welcome()
     {
