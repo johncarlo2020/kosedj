@@ -122,10 +122,15 @@ class StationController extends Controller
         return view('congrats', compact('top','lang'));
     }
 
-    public function survey()
+    public function survey(Request $request)
     {
+        $userId = auth()->id();
+
+        $lang=$request->lang;
+        // Fetch the survey options
+
         $optionsList = Survey::get();
-        $lang= auth()->user()->lang;
+        // dd($optionsList);
 
         return view('survey', compact('optionsList','lang'));
     }

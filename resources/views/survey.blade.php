@@ -33,6 +33,7 @@
                                             <div class="mb-3 text-center text-white step-name">
                                                 <div class="mt-3 branding">
                                                     @if ($lang=='cn')
+
                                                     <img class="surveyBubble"
                                                     src="{{ asset('images/Surveycn' . $index + 1 . '.png') }}"
                                                     alt="" />

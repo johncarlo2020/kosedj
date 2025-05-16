@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('welcome');
 
 Route::get('/qr', function () {
     return view('error');
@@ -29,6 +29,8 @@ Route::get('/admin/login', function () {
 });
 
 Route::get('/test', 'App\Http\Controllers\StationController@test')->name('test');
+Route::get('/', 'App\Http\Controllers\StationController@welcome')->name('dashboard');
+Route::get('/survey', 'App\Http\Controllers\StationController@survey')->name('survey');
 
 Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin', 'App\Http\Controllers\StationController@admin')->name('admin');
@@ -43,11 +45,9 @@ Route::group(['middleware' => ['client', 'verified']], function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/station/{station}', 'App\Http\Controllers\StationController@index')->name('station');
-    Route::get('/dashboard', 'App\Http\Controllers\StationController@welcome')->name('dashboard');
     Route::post('/process_qr_code', 'App\Http\Controllers\StationController@scan')->name('process_qr_code');
     Route::get('/station/{station}/extension', 'App\Http\Controllers\StationController@extension')->name('station.extension');
     Route::get('/station/{station}/brand', 'App\Http\Controllers\StationController@brand')->name('station.brand');
-    Route::get('/survey', 'App\Http\Controllers\StationController@survey')->name('survey');
     Route::post('/answerSurvey', 'App\Http\Controllers\StationController@answerSurvey')->name('answerSurvey');
     Route::get('/congrats', 'App\Http\Controllers\StationController@congrats')->name('congrats');
     Route::post('/lang', 'App\Http\Controllers\StationController@lang')->name('lang');

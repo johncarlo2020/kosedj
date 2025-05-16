@@ -54,7 +54,7 @@
                     lang: language,
                 },
                 success: function(response) {
-                    window.location.href = '{{ route('survey') }}';
+                    window.location.href = '{{ route('survey') }}?lang=' + language;
 
                 },
                 error: function(xhr, status, error) {
