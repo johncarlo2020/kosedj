@@ -19,19 +19,12 @@
                         />
                     </div>
 
-                    @if ($user == true)
-                    <a
-                        href="{{ route('congrats') }}"
-                        class="mt-5 mb-5 discover-btn btn rounded-pill"
-                        >My Result</a
-                    >
-                    @else
+
                     <p class="my-2 text-white">Start Survey</p>
                     <div class="button-container">
                             <button type="button" onclick="sendMessage('en')" class="language-btn btn rounded-pill">English</button>
                             <button type="button" onclick="sendMessage('cn')" class="language-btn btn rounded-pill">华语</button>
                     </div>
-                    @endif
                 </div>
             </div>
         </div>

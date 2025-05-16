@@ -145,11 +145,11 @@ class StationController extends Controller
 
     public function welcome()
     {
-        $userId = Auth::id();
+        // $userId = Auth::id();
 
-        $user = Answers::where('user_id', auth()->id())->exists();
+        // $user = Answers::where(column: 'user_id', auth()->id())->exists();
 
-        return view('dashboard', compact('user'));
+        return view('dashboard' );
     }
 
     public function scan(Request $request)
